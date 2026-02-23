@@ -63,6 +63,10 @@ main {
   padding: 2rem;
 }
 
+main p {
+  font-size: 1.2rem;
+}
+
 /* 404 */
 .not-found-title {
   font-size: 5rem;
@@ -74,7 +78,6 @@ main {
 }
 
 .not-found p {
-  font-size: 1.2rem;
   margin-bottom: 2rem;
 }
 
