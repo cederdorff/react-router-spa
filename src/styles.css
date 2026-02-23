@@ -2,7 +2,6 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 }
@@ -15,23 +14,25 @@ body {
 
 nav {
   display: flex;
-  gap: 1rem;
-  padding: 1rem;
+  gap: 1.5rem;
+  padding: 1rem 1.5rem;
   background-color: #1a1a1a;
 }
 
 nav a {
-  color: #646cff;
+  color: rgba(255, 255, 255, 0.5);
   text-decoration: none;
+  padding: 0.25rem 0;
+  border-bottom: 2px solid transparent;
 }
 
 nav a:hover {
-  text-decoration: underline;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 nav a.active {
   color: #ffffff;
-  font-weight: 600;
+  border-bottom-color: #646cff;
 }
 
 main {
@@ -65,19 +66,4 @@ main {
 .not-found a:hover {
   background-color: #646cff;
   color: #ffffff;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-
-  nav {
-    background-color: #f0f0f0;
-  }
-
-  nav a.active {
-    color: #213547;
-  }
 }
