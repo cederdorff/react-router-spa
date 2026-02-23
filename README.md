@@ -20,18 +20,30 @@ You can display images in three ways:
 3. **External URL**
    - Use a full URL to load an image from the internet.
 
-## Deployment to GitHub Pages
+## Deployment to GitHub Pages (SPA)
 
-If you deploy to GitHub Pages (or any subpath), set the `base` property in `vite.config.js`:
+If you deploy to GitHub Pages (or any subpath), your Vite config should set the `base` property dynamically:
 
 ```js
-export default defineConfig({
-  base: "/react-router-spa/",
+export default defineConfig(({ command }) => ({
+  base: command === "serve" ? "/" : "/react-router-spa/",
   plugins: [react()]
-});
+}));
 ```
 
-This ensures all asset and router paths work correctly when deployed to a subdirectory.
+In your `src/main.jsx`, set the `basename` prop on `BrowserRouter`:
+
+```jsx
+<BrowserRouter basename={import.meta.env.BASE_URL}>
+  <App />
+</BrowserRouter>
+```
+
+### SPA 404 Fallback
+
+GitHub Pages does not support client-side routing out of the box. To enable SPA routing (so deep links and refreshes work), add a `public/404.html` file that matches your `index.html` and includes a meta refresh to redirect to your app root. This template already includes a suitable `404.html`.
+
+**If you change your repo name, update the base path in `vite.config.js` and redeploy.**
 
 ## React Compiler
 
