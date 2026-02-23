@@ -46,6 +46,12 @@ npm install
 npm run dev
 ```
 
+### New Project Walkthrough
+
+For a full step-by-step onboarding guide (template setup, GitHub Pages, base path config, and deployment), see:
+
+- [docs/getting-started.md](docs/getting-started.md)
+
 ### Image Usage in React
 
 1. **Import from `src/assets`**  
