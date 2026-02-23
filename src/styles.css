@@ -43,4 +43,12 @@ main {
     color: #213547;
     background-color: #ffffff;
   }
+
+  nav {
+    background-color: #f0f0f0;
+  }
+
+  nav a.active {
+    color: #213547;
+  }
 }
