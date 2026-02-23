@@ -29,7 +29,7 @@ src/
     NotFoundPage.jsx
 public/
   logo.webp         # Example public image
-  404.html          # SPA fallback for GitHub Pages
+  # (No 404.html needed; see deployment notes)
 index.html
 vite.config.js
 .github/
@@ -92,7 +92,7 @@ npm run dev
 
 ## SPA 404 Fallback
 
-GitHub Pages does not support client-side routing out of the box. The deployment workflow ensures a `404.html` is present in the build output, so deep links and refreshes work.
+GitHub Pages does not support client-side routing out of the box. The deployment workflow copies `index.html` to `404.html` in the build output, so deep links and refreshes work. You do **not** need a 404.html in your public folder.
 
 ## Customization
 
