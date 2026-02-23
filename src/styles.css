@@ -67,6 +67,29 @@ main p {
   font-size: 1.2rem;
 }
 
+main img {
+  display: block;
+  margin: 1rem 0;
+  border-radius: 8px;
+}
+
+.img-small {
+  width: 100px;
+}
+
+.img-medium {
+  width: 200px;
+}
+
+main h2 {
+  margin-top: 2rem;
+}
+
+main h3 {
+  margin-top: 1.5rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
 /* 404 */
 .not-found-title {
   font-size: 5rem;
