@@ -79,3 +79,49 @@ Example: if your repository is `react-web-app`, use:
    ![The Deployed solution in browser](./images/deployed-solution.png)
 
 Deployment complete.
+
+## 8. Test Deployment with a Small Change
+
+This step confirms your GitHub Pages deployment updates after a new push.
+
+### 8.1 Make a Small Change
+
+Open `src/pages/HomePage.jsx` and update a visible text string. For example:
+
+```jsx
+<p>Welcome to the home page.</p>
+```
+
+to:
+
+```jsx
+<p>Welcome to my first React app on GitHub Pages.</p>
+```
+
+### 8.2 Commit and Push the Change
+
+Preferred (VS Code Source Control):
+
+1. Open Source Control (`Ctrl+Shift+G` on Windows/Linux, `Cmd+Shift+G` on macOS).
+2. Confirm the file change.
+3. Add commit message: `"Update homepage text"`.
+4. Click **Commit**.
+5. Click **Sync Changes**.
+
+Reference (GitHub Desktop):
+
+1. Open GitHub Desktop.
+2. Confirm the change in `src/pages/HomePage.jsx`.
+3. Add commit message: `"Update homepage text"`.
+4. Click **Commit to main**.
+5. Click **Push origin** (or **Sync Changes**).
+
+### 8.3 Follow the Deployment
+
+1. Open your repository on GitHub.
+2. Go to the **Actions** tab.
+3. Wait for the deployment workflow to run and finish with a green check.
+4. Open your live site URL and refresh the page.
+5. Confirm your text change is visible online.
+
+Tip: deployment usually takes 1-3 minutes after push.
