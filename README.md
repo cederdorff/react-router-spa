@@ -1,49 +1,106 @@
-# React + Vite
+# React Router SPA Template
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A minimal React 19 + Vite + React Router v7 single-page application template, ready for deployment to GitHub Pages.
 
-## Image Usage in React
+## Features
 
-You can display images in three ways:
+- React 19, Vite, and SWC for fast development
+- React Router v7 with dynamic basename for subpath hosting
+- Centralized dark theme styling (`src/styles.css`)
+- Three demo pages: Home, About, Contact, plus a custom 404 page
+- Image usage examples (import, public folder, external)
+- GitHub Actions workflow for automatic deployment to GitHub Pages
+- SPA routing support on GitHub Pages (404 fallback)
 
-1. **Import from `src/assets`**
-   - Import the image at the top of your component. Vite will bundle and hash the file for you.
-   - Example:
-     ```jsx
-     import logo from "../assets/logo.svg";
-     <img src={logo} alt="Logo" />;
-     ```
-2. **Public folder**
-   - Place the image in the `/public` folder and reference it by path (e.g. `/logo.svg`).
-   - This is served as-is, no processing or hashing.
-   - Note: For GitHub Pages, see the deployment section below.
-3. **External URL**
-   - Use a full URL to load an image from the internet.
+## Project Structure
 
-## Deployment to GitHub Pages (SPA)
-
-If you deploy to GitHub Pages (or any subpath), your Vite config should set the `base` property dynamically:
-
-```js
-export default defineConfig(({ command }) => ({
-  base: command === "serve" ? "/" : "/react-router-spa/",
-  plugins: [react()]
-}));
+```
+src/
+  App.jsx           # Main app with routes
+  main.jsx          # Entry, sets up BrowserRouter
+  styles.css        # All styles in one file
+  assets/           # Example image assets
+  components/
+    Navbar.jsx      # Navigation bar with NavLink
+  pages/
+    HomePage.jsx
+    AboutPage.jsx
+    ContactPage.jsx
+    NotFoundPage.jsx
+public/
+  logo.webp         # Example public image
+  404.html          # SPA fallback for GitHub Pages
+index.html
+vite.config.js
+.github/
+  workflows/
+    deploy.yml      # GitHub Actions deployment workflow
 ```
 
-In your `src/main.jsx`, set the `basename` prop on `BrowserRouter`:
+## Usage
 
-```jsx
-<BrowserRouter basename={import.meta.env.BASE_URL}>
-  <App />
-</BrowserRouter>
+### Development
+
+```sh
+npm install
+npm run dev
 ```
 
-### SPA 404 Fallback
+### Image Usage in React
 
-GitHub Pages does not support client-side routing out of the box. To enable SPA routing (so deep links and refreshes work), add a `public/404.html` file that matches your `index.html` and includes a meta refresh to redirect to your app root. This template already includes a suitable `404.html`.
+1. **Import from `src/assets`**  
+   Import at the top of your component. Vite will bundle and hash the file.
+   ```jsx
+   import logo from "../assets/logo.svg";
+   <img src={logo} alt="Logo" />;
+   ```
+2. **Public folder**  
+   Place the image in `/public` and reference by path (e.g. `logo.webp`).
+   ```jsx
+   <img src="logo.webp" alt="Logo from public" />
+   ```
+3. **External URL**  
+   Use a full URL for images from the internet.
 
-**If you change your repo name, update the base path in `vite.config.js` and redeploy.**
+### Routing
+
+- All routes are defined in `src/App.jsx`.
+- Navigation uses `NavLink` for active link styling.
+- The 404 page is shown for unknown routes.
+
+## Deployment to GitHub Pages
+
+- The Vite config sets the base path dynamically from your repo name:
+  ```js
+  // vite.config.js
+  import pkg from "./package.json";
+  export default defineConfig(({ command }) => ({
+    base: command === "serve" ? "/" : `/${pkg.name}/`,
+    plugins: [react()]
+  }));
+  ```
+- `BrowserRouter` uses the correct basename:
+  ```jsx
+  <BrowserRouter basename={import.meta.env.BASE_URL}>
+    <App />
+  </BrowserRouter>
+  ```
+- The GitHub Actions workflow (`.github/workflows/deploy.yml`) builds and deploys automatically on push to `main`.
+- The workflow copies `index.html` to `404.html` in the build output, so SPA routing works on GitHub Pages.
+
+**If you change your repo name, update the `name` field in `package.json` and redeploy.**
+
+## SPA 404 Fallback
+
+GitHub Pages does not support client-side routing out of the box. The deployment workflow ensures a `404.html` is present in the build output, so deep links and refreshes work.
+
+## Customization
+
+- Edit or add pages in `src/pages/`.
+- Update navigation in `src/components/Navbar.jsx`.
+- Change styles in `src/styles.css`.
+
+---
 
 ## React Compiler
 
