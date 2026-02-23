@@ -38,6 +38,35 @@ main {
   padding: 2rem;
 }
 
+.not-found {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.not-found h1 {
+  font-size: 6rem;
+  margin: 0;
+  color: #646cff;
+}
+
+.not-found p {
+  font-size: 1.2rem;
+  margin: 1rem 0 2rem;
+}
+
+.not-found a {
+  color: #646cff;
+  text-decoration: none;
+  border: 1px solid #646cff;
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+}
+
+.not-found a:hover {
+  background-color: #646cff;
+  color: #ffffff;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
