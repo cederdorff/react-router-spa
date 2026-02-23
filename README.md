@@ -5,7 +5,7 @@ A minimal React 19 + Vite + React Router v7 single-page application template, re
 ## Features
 
 - React 19, Vite, and SWC for fast development
-- React Router v7 with dynamic basename for subpath hosting
+- React Router v7 with configurable basename for subpath hosting
 - Centralized dark theme styling (`src/styles.css`)
 - Three demo pages: Home, About, Contact, plus a custom 404 page
 - Image usage examples (import, public folder, external)
@@ -70,12 +70,18 @@ npm run dev
 
 ## Deployment to GitHub Pages
 
-- The Vite config sets the base path dynamically from your repo name:
+- Set your deployment base path in `package.json`:
+  ```json
+  {
+    "base": "/react-router-spa/"
+  }
+  ```
+- The Vite config reads this value for production builds:
   ```js
   // vite.config.js
   import pkg from "./package.json";
   export default defineConfig(({ command }) => ({
-    base: command === "serve" ? "/" : `/${pkg.name}/`,
+    base: command === "serve" ? "/" : pkg.base,
     plugins: [react()]
   }));
   ```
@@ -88,7 +94,7 @@ npm run dev
 - The GitHub Actions workflow (`.github/workflows/deploy.yml`) builds and deploys automatically on push to `main`.
 - The workflow copies `index.html` to `404.html` in the build output, so SPA routing works on GitHub Pages.
 
-**If you change your repo name, update the `name` field in `package.json` and redeploy.**
+**If your repository path changes, update `base` in `package.json` and redeploy.**
 
 ## SPA 404 Fallback
 
