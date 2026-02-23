@@ -2,10 +2,36 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+## Image Usage in React
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+You can display images in three ways:
+
+1. **Import from `src/assets`**
+   - Import the image at the top of your component. Vite will bundle and hash the file for you.
+   - Example:
+     ```jsx
+     import logo from "../assets/logo.svg";
+     <img src={logo} alt="Logo" />;
+     ```
+2. **Public folder**
+   - Place the image in the `/public` folder and reference it by path (e.g. `/logo.svg`).
+   - This is served as-is, no processing or hashing.
+   - Note: For GitHub Pages, see the deployment section below.
+3. **External URL**
+   - Use a full URL to load an image from the internet.
+
+## Deployment to GitHub Pages
+
+If you deploy to GitHub Pages (or any subpath), set the `base` property in `vite.config.js`:
+
+```js
+export default defineConfig({
+  base: "/react-router-spa/",
+  plugins: [react()]
+});
+```
+
+This ensures all asset and router paths work correctly when deployed to a subdirectory.
 
 ## React Compiler
 
