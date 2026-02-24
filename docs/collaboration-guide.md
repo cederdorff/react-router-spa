@@ -449,7 +449,7 @@ Hold review simpelt:
    - er testet lokalt
    - ikke overlapper tydeligt med andres ændringer
 5. Klik **Review changes** og vælg **Approve**, eller skriv en kort kommentar.
-6. Gå tilbage til fanen **Conversation**, så PR'en kan merges i næste step (Merge pull request).
+6. Gå tilbage til fanen **Conversation**, så PR'en kan merges i næste step (Step 2.8: Merge PRs en ad gangen).
    ![Pull request overview (open)](./images/pr-feature-homepage.png)
 
 Tip: Filtrér på **Open**, så I kun ser aktive PRs.
