@@ -48,10 +48,10 @@ npm run dev
 
 ### New Project Walkthrough
 
-For a full step-by-step onboarding guide (template setup, GitHub Pages, base path config, and deployment), see:
+For the full onboarding flow, use the guides in order:
 
-- [docs/getting-started.md](docs/getting-started.md)
-- [docs/collaboration-guide.md](docs/collaboration-guide.md)
+- Part 1: [docs/template-to-github-pages-setup.md](docs/template-to-github-pages-setup.md) (template setup, base path config, and GitHub Pages deployment)
+- Part 2: [docs/collaboration-guide.md](docs/collaboration-guide.md) (branches, Pull Requests, and team collaboration workflow)
 
 ### Image Usage in React
 

@@ -1,12 +1,13 @@
-# Getting Started Guide
+# From Template to GitHub Pages: Setup Guide
 
-This guide walks you through creating your own project from this template and deploying it to GitHub Pages.
+Part 1 of the onboarding guide: set up your own repository from this template and deploy it to GitHub Pages.  
+Part 2 continues in [collaboration-guide.md](./collaboration-guide.md), where you work with branches, Pull Requests, and team collaboration flow.
 
 ## 1. Use the Template
 
 1. Open the template repository: https://github.com/cederdorff/react-router-spa
 2. Click **Use this template** -> **Create a new repository**.
-3. Enter a repository name (for example, `customer-experience`).
+3. Enter a repository name (for example, `react-router-app`, `customer-experience-exam`).
 4. Set visibility to **Public** (recommended for GitHub Pages and for RACE access).
 5. Click **Create repository**.
 
@@ -136,3 +137,5 @@ Reference (GitHub Desktop):
 5. Confirm your text change is visible online.
 
 Tip: deployment usually takes 1-3 minutes after push.
+
+---
