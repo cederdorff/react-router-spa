@@ -139,3 +139,14 @@ Reference (GitHub Desktop):
 Tip: deployment usually takes 1-3 minutes after push.
 
 ---
+
+## Next Steps
+
+Du har nu gennemført del 1: oprettelse fra template, lokal opsætning og deployment til GitHub Pages.
+
+Fortsæt med del 2 i [collaboration-guide.md](./collaboration-guide.md), hvor I arbejder med:
+
+- collaborators
+- branches
+- Pull Requests
+- sikker merge til `main`
