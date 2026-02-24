@@ -305,9 +305,7 @@ export default function AboutPage() {
         <h1>About</h1>
       </header>
       <main className="about-container">
-        <p>
-          We build modern web apps with React, clear branching, and structured Pull Requests.
-        </p>
+        <p>We build modern web apps with React, clear branching, and structured Pull Requests.</p>
 
         <section className="about-stats">
           <article className="stat">
@@ -439,17 +437,20 @@ Tip: Det er bedst, at en anden end forfatteren selv merger PR'en.
 
 Hold review simpelt:
 
-1. Gå til fanen **Pull requests**: 
+1. Gå til fanen **Pull requests**:
    ![All pull requests (open)](./images/all-pull-requests.png)
 2. Åbn PR'en.
-   ![[pr-feature-homepage.png]]
+   ![Pull request overview (open)](./images/pr-feature-homepage.png)
 3. Gå til fanen **Files changed**:
-	![[pr-files-changed.png]]
+   ![Pull request overview (tabs)](./images/pr-files-changed.png)
+   Brug denne fane til selve reviewet: her kan du se præcis hvilke linjer der er ændret, og kommentere direkte i koden.
 4. Tjek at PR'en:
    - har en kort beskrivelse
    - er testet lokalt
    - ikke overlapper tydeligt med andres ændringer
-4. Klik **Review changes** og vælg **Approve**, eller skriv en kort kommentar.
+5. Klik **Review changes** og vælg **Approve**, eller skriv en kort kommentar.
+6. Gå tilbage til fanen **Conversation**, så PR'en kan merges i næste step (Merge pull request).
+   ![Pull request overview (open)](./images/pr-feature-homepage.png)
 
 Tip: Filtrér på **Open**, så I kun ser aktive PRs.
 
@@ -460,7 +461,16 @@ Merge PRs én ad gangen for at minimere konflikter.
 > **Begreb: Merge**  
 > Merge betyder at samle ændringer fra en branch/PR ind i `main`.
 
-Tip: Lad evt. repository-ejeren stå for merge.
+Sådan merger I PR'en:
+
+1. Åbn PR'en i fanen **Conversation**.
+2. Bekræft at PR'en er reviewed/godkendt.
+3. Klik **Merge pull request**.
+4. Klik **Confirm merge**.
+5. Bekræft at status viser merged.
+6. Klik evt. **Delete branch**, hvis branchen ikke længere skal bruges.
+
+Tip: Lad gerne en anden end forfatteren stå for merge.
 
 ### Step 2.9: Når PR er merged, opdater din lokale `main`
 
