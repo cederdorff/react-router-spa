@@ -166,7 +166,7 @@ Tilføj route i `src/App.jsx`:
 ```jsx
 import ServicesPage from "./pages/ServicesPage";
 
-<Route path="/services" element={<ServicesPage />} />;
+<Route path="/services" element={<ServicesPage />} />
 ```
 
 Tilføj link i `src/components/Navbar.jsx`:
@@ -306,7 +306,7 @@ VS Code Source Control:
 npm run dev
 ```
 
-4. Har du fået ændringerne ned, og virker appen? Godt, så er du klar til at arbejde videre i din branch eller oprette en ny feature-branch (hvis vi arbejdede på et rigtigt projekt).
+4. Når appen virker, er du klar til næste opgave i en ny feature-branch.
 
 ### Step 2.10: Ryd op i din feature-branch
 
