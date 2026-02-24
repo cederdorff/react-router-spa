@@ -50,6 +50,11 @@ npm run dev
 
 5. Åbn lokal URL i browser og test at løsningen kører.
    ![Localhost test](./images/localhost-test.png)
+6. Brug 2-3 minutter på at gennemgå projektet, så alle ved hvad templaten allerede kan.
+   Tjek især `HomePage`, hvor billeder vises på tre måder:
+   - **Import fra `src/assets`**: bruges til billeder, der er en del af appens kodebase. Vite håndterer dem i build-processen.
+   - **Fil fra `public`**: bruges til statiske filer, der skal ligge med fast sti (fx logo/favicons), uden import i komponenten.
+   - **Ekstern URL**: bruges når billedet kommer fra en ekstern kilde/API, og ikke ligger i jeres repository.
 
 ### Step 1.3: Fordel opgaver i gruppen
 
@@ -139,48 +144,133 @@ footer {
 
 #### Person B: Forbedre HomePage
 
-Opdater `src/pages/HomePage.jsx` med en hero-sektion og feature cards.
+Opdater `src/pages/HomePage.jsx` med en introduktion og tre feature-kort, men behold billedsektionen:
+
+```jsx
+import reactRouterLogo from "../assets/example.svg";
+
+export default function HomePage() {
+  return (
+    <>
+      <header>
+        <h1>Home</h1>
+        <p className="home-intro">Welcome to our React Router project.</p>
+      </header>
+      <main>
+        <section className="home-features">
+          <article className="feature-card">
+            <h3>Routing</h3>
+            <p>Navigate between pages with React Router.</p>
+          </article>
+          <article className="feature-card">
+            <h3>Components</h3>
+            <p>Build reusable UI components for each page.</p>
+          </article>
+          <article className="feature-card">
+            <h3>Deployment</h3>
+            <p>Deploy automatically to GitHub Pages.</p>
+          </article>
+        </section>
+
+        <article>
+          <h2>Displaying images in React</h2>
+
+          <h3>1. Import from src/assets</h3>
+          <img src={reactRouterLogo} alt="Example SVG" className="img-small" />
+
+          <h3>2. Public folder</h3>
+          <img src="logo.webp" alt="Logo from public folder" className="img-small" />
+
+          <h3>3. External URL</h3>
+          <img src="https://picsum.photos/200" alt="Random external image" className="img-medium" />
+        </article>
+      </main>
+    </>
+  );
+}
+```
 
 Tilføj styling i `src/styles.css`:
 
 ```css
-.hero {
-  text-align: center;
-  padding: 2rem 0;
-}
-
-.subtitle {
+.home-intro {
   color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 2rem;
+  margin-top: 0.5rem;
 }
 
-.features {
+.home-features {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
+  gap: 1.25rem;
+  margin-top: 1rem;
 }
 
 .feature-card {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 10px;
-  padding: 1rem;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 1.25rem;
 }
 ```
 
 #### Person C: Services-side
 
-Opret `src/pages/ServicesPage.jsx` med et simpelt grid af services.
-
-Tilføj route i `src/App.jsx`:
+Opret `src/pages/ServicesPage.jsx`:
 
 ```jsx
-import ServicesPage from "./pages/ServicesPage";
-
-<Route path="/services" element={<ServicesPage />} />;
+export default function ServicesPage() {
+  return (
+    <>
+      <header>
+        <h1>Services</h1>
+      </header>
+      <main className="services-grid">
+        <article className="service-card">
+          <h3>Web Development</h3>
+          <p>Custom websites and frontend solutions.</p>
+        </article>
+        <article className="service-card">
+          <h3>UX/UI Design</h3>
+          <p>Design of user-friendly digital interfaces.</p>
+        </article>
+        <article className="service-card">
+          <h3>Consulting</h3>
+          <p>Technical guidance and architecture support.</p>
+        </article>
+      </main>
+    </>
+  );
+}
 ```
 
-Tilføj link i `src/components/Navbar.jsx`:
+Opdater `src/App.jsx` (vises som hele filen):
+
+```jsx
+import { Routes, Route } from "react-router";
+import Navbar from "./components/Navbar";
+import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
+import ContactPage from "./pages/ContactPage";
+import ServicesPage from "./pages/ServicesPage";
+import NotFoundPage from "./pages/NotFoundPage";
+
+export default function App() {
+  return (
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </>
+  );
+}
+```
+
+Opdater `src/components/Navbar.jsx` (indsæt `Services`-link mellem `About` og `Contact`):
 
 ```jsx
 <NavLink to="/services">Services</NavLink>
@@ -205,26 +295,58 @@ Tilføj styling i `src/styles.css`:
 
 #### Person D: Style About-side
 
-Opdater `src/pages/AboutPage.jsx` med mere indhold.
+Opdater `src/pages/AboutPage.jsx` med mere indhold:
+
+```jsx
+export default function AboutPage() {
+  return (
+    <>
+      <header>
+        <h1>About</h1>
+      </header>
+      <main className="about-container">
+        <p>
+          We build modern web apps with React, clear branching, and structured Pull Requests.
+        </p>
+
+        <section className="about-stats">
+          <article className="stat">
+            <h3>12+</h3>
+            <p>Projects</p>
+          </article>
+          <article className="stat">
+            <h3>4</h3>
+            <p>Team Members</p>
+          </article>
+          <article className="stat">
+            <h3>100%</h3>
+            <p>Deployed</p>
+          </article>
+        </section>
+      </main>
+    </>
+  );
+}
+```
 
 Tilføj styling i `src/styles.css`:
 
 ```css
 .about-container {
-  max-width: 900px;
-  margin: 0 auto;
+  max-width: 760px;
 }
 
 .about-stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
 }
 
 .stat {
   text-align: center;
   padding: 1rem;
-  border-radius: 10px;
+  border-radius: 8px;
   background: #4a50c7;
   color: #fff;
 }
@@ -236,7 +358,7 @@ Tilføj styling i `src/styles.css`:
 npm run dev
 ```
 
-Tjek ændringerne i browseren, før du pusher.
+- Tjek ændringerne i browseren, før du pusher.
 
 > Vi skal sikre at `main` altid er stabil, så det er vigtigt at teste lokalt først. ALTID!
 
@@ -298,7 +420,7 @@ Brug denne enkle PR-skabelon i beskrivelsen:
 Efter PR'en er oprettet:
 
 1. Bekræft at PR'en ser korrekt ud (filer, titel, beskrivelse).
-   ![Pull request](./images/pull-request.png)
+   ![Pull request overview (open)](./images/pull-request-overview-open.png)
 2. Bed en anden i gruppen om at reviewe PR'en (se step 2.7).
 3. Når PR'en er godkendt, klik **Merge pull request**.
 4. Tjek merge-dialogen og klik **Confirm merge**:
@@ -317,9 +439,13 @@ Tip: Det er bedst, at en anden end forfatteren selv merger PR'en.
 
 Hold review simpelt:
 
-1. Gå til fanen **Pull requests** og vælg en åben PR.
-2. Åbn fanen **Files changed** i PR'en.
-3. Tjek at PR'en:
+1. Gå til fanen **Pull requests**: 
+   ![All pull requests (open)](./images/all-pull-requests.png)
+2. Åbn PR'en.
+   ![[pr-feature-homepage.png]]
+3. Gå til fanen **Files changed**:
+	![[pr-files-changed.png]]
+4. Tjek at PR'en:
    - har en kort beskrivelse
    - er testet lokalt
    - ikke overlapper tydeligt med andres ændringer
