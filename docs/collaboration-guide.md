@@ -67,14 +67,14 @@ Hvis I er 3 personer, vælg tre features og gem den sidste til senere.
 > En branch er en separat arbejdsgren af koden, hvor du kan lave ændringer uden at påvirke `main`.  
 > Når ændringen er klar, sendes den til `main` via en Pull Request.
 
-### Step 2.1: Opret din branch
+### Step 2.1: Opret din branch (i VS Code)
 
-1. Klik på branch-navnet nederst til venstre i VS Code (typisk `main`).
-2. Vælg `main` og klik `Sync Changes`, så du har seneste version.
-3. Klik på branch-navnet igen.
-4. Vælg **Create new branch...**.
-5. Indtast dit branch-navn fra tabellen, fx `feature/add-footer`.
-6. Tryk Enter.
+1. Tjek at du står på `main` nederst til venstre i VS Code.
+2. Hvis ikke, klik på branch-navnet og vælg `main`.
+3. Klik **Sync Changes** (de cirkulære pile nederst til venstre), så din `main` er opdateret.
+4. Klik på branch-navnet nederst til venstre igen.
+5. Vælg **Create new branch...**.
+6. Skriv dit branch-navn fra tabellen, fx `feature/add-footer`, og tryk Enter.
 
 > **Begreb: `Sync Changes`**  
 > `Sync Changes` henter nye ændringer fra GitHub og pusher dine egne ændringer op.
@@ -233,7 +233,9 @@ Tilføj styling i `src/styles.css`:
 npm run dev
 ```
 
-Tjek også ændringen i browseren, før du pusher.
+Tjek ændringerne i browseren, før du pusher.
+
+> Vi skal sikre at `main` altid er stabil, så det er vigtigt at teste lokalt først. ALTID!
 
 ### Step 2.4: Commit din ændring
 
@@ -262,17 +264,17 @@ VS Code Source Control:
 
 ### Step 2.6: Opret Pull Request
 
-Hver person opretter en PR fra egen branch til `main`.
+> En Pull Request (PR) er den sikre måde at få kode ind i `main` på.
 
-En Pull Request (PR) er den sikre måde at få kode ind i `main` på.
+Hvert gruppemedlem opretter en PR fra egen branch til `main`.
 
 - Du har lavet ændringer i din feature-branch.
 - PR'en viser præcis hvilke filer og linjer der er ændret.
 - Andre kan læse, kommentere og godkende ændringen.
 - Først derefter merges ændringen til `main`, som er den branch der deployes.
 
-Kort sagt: **branch = der hvor du arbejder**, **PR = der hvor ændringen vurderes**, **main = stabil kode der deployes**.
-Sådan finder og opretter du PR'en på GitHub:
+> Kort sagt: **branch = der hvor du arbejder**, **PR = der hvor ændringen vurderes**, **main = stabil kode der deployes**.
+> Sådan finder og opretter du PR'en på GitHub:
 
 1. Gå til repository på GitHub.
 2. Klik **Compare & pull request** (vises ofte efter push).
