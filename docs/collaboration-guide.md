@@ -11,6 +11,11 @@ Formål med guiden:
 - merge sikkert til `main`
 - verificere deployment på GitHub Pages
 
+Vigtig regel:
+Arbejd aldrig direkte på `main`.
+`main` skal holdes ren og fejlfri, fordi det er den branch, der altid deployes.
+Derfor laver vi alt arbejde i feature-branches og merger via Pull Requests.
+
 ## Del 1: Inviter collaborators
 
 ### Step 1.1: Inviter kollega(er)
@@ -289,35 +294,102 @@ Merge PRs én ad gangen for at minimere konflikter.
 
 Tip: I kan vælge, at repository-ejeren står for merge, hvis I vil gøre processen endnu enklere.
 
-### Step 2.9: Opdater din branch med `main`
-
-Hvis din PR ikke er merged endnu, brug VS Code:
-
-1. Skift til `main` via branch-navnet nederst til venstre.
-2. Klik **Sync Changes**.
-3. Skift tilbage til din feature-branch.
-4. Åbn Command Palette (`Cmd+Shift+P` / `Ctrl+Shift+P`).
-5. Vælg **Git: Merge Branch...**.
-6. Vælg `main`.
-7. Hvis der opstår konflikter: løs dem i editoren, commit, og klik **Sync Changes**.
-
-### Step 2.10: Opdater lokal `main` efter alle merges
+### Step 2.9: Når PR er merged, opdater din lokale `main`
 
 VS Code Source Control:
 
 1. Skift til branch `main`.
-2. Klik **Sync Changes** for at hente alle merged features.
+2. Klik **Sync Changes** for at hente den mergede ændring ned lokalt.
 3. Test appen:
 
 ```bash
 npm run dev
 ```
 
+4. Har du fået ændringerne ned, og virker appen? Godt, så er du klar til at arbejde videre i din branch eller oprette en ny feature-branch (hvis vi arbejdede på et rigtigt projekt).
+
+### Step 2.10: Ryd op i din feature-branch
+
+Når din PR er merged:
+
+1. Slet branchen på GitHub med **Delete branch** i PR'en.
+2. Skift lokalt til `main`.
+3. Slet den lokale feature-branch i VS Code (Branch-menu -> **Delete Branch...**).
+
+Hvis din PR ikke kan merges pga. konflikt, opdater da din feature-branch med `main` først. Se næste step.
+
+### Step 2.11: Merge `main` ind i din feature-branch (kun når nødvendigt)
+
+Hvorfor:
+
+- så din branch indeholder de nyeste ændringer fra holdet
+- så du opdager og løser konflikter, før PR'en merges
+
+Hvornår:
+
+- når GitHub viser, at din PR er **out of date**
+- når der er merge-konflikt i PR'en
+- når der er gået tid, og flere PRs er merged siden du startede
+
+Hvordan (VS Code):
+
+1. Skift til `main`.
+2. Klik **Sync Changes**.
+3. Skift tilbage til din feature-branch.
+4. Åbn Command Palette (`Cmd+Shift+P` / `Ctrl+Shift+P`).
+5. Vælg **Git: Merge Branch...** og vælg `main`.
+6. Løs evt. konflikter i editoren, commit, og klik **Sync Changes**.
+
+### Step 2.12: Øvelse - simulér en merge-konflikt (anbefalet)
+
+Formål:
+At prøve en kontrolleret konflikt, så I lærer at løse den trygt i VS Code.
+
+Opsætning:
+
+1. Person A opretter branch `feature/conflict-a`.
+2. Person B opretter branch `feature/conflict-b`.
+3. Begge redigerer **samme linje** i samme fil, fx i `src/pages/HomePage.jsx`:
+   - linjen med teksten `Welcome to the home page.`
+4. Person A ændrer teksten til:
+   - `Welcome to the home page - version A`
+5. Person B ændrer teksten til:
+   - `Welcome to the home page - version B`
+
+Forløb:
+
+1. Person A committer, pusher og merger sin PR først.
+2. Person B laver PR bagefter.
+3. GitHub vil typisk vise konflikt, fordi samme linje er ændret forskelligt.
+
+Løsning i VS Code (Person B):
+
+1. Skift til `main` og klik **Sync Changes**.
+2. Skift tilbage til `feature/conflict-b`.
+3. Kør **Git: Merge Branch...** og vælg `main`.
+4. Åbn konfliktfilen i editoren.
+5. Vælg en løsning:
+   - **Accept Current Change** (behold din branch)
+   - **Accept Incoming Change** (behold `main`)
+   - **Accept Both Changes** (behold begge, og redigér manuelt bagefter)
+6. Gem filen, commit konfliktløsningen og klik **Sync Changes**.
+7. Gå tilbage til PR'en og merge.
+
 Kort opsummering af PR-flow:
 
 1. Alle laver branch + PR.
-2. PRs reviews kort og merges én ad gangen.
-3. Alle synkroniserer `main` bagefter.
+2. PRs reviewes kort og merges én ad gangen.
+3. Efter merge synkroniserer alle lokal `main`.
+
+### Verificer automatisk deploy efter merge
+
+Efter hver merge til `main` skal I bekræfte, at løsningen er deployet:
+
+1. Gå til **Actions** i GitHub-repositoriet.
+2. Find seneste deploy-workflow for `main`.
+3. Bekræft at workflow ender med grøn status.
+4. Åbn jeres GitHub Pages URL.
+5. Opdatér siden og verificer, at den mergede ændring er synlig live.
 
 ## Del 3: Best Practices
 
@@ -349,15 +421,11 @@ Undgå:
 3. Test altid for PR.
 4. Hold beskrivelsen kort: hvad er ændret og hvordan er det testet.
 
-### Verificer automatisk deploy efter merge
+### Main branch-regel
 
-Efter hver merge til `main` skal I bekræfte, at løsningen er deployet:
-
-1. Gå til **Actions** i GitHub-repositoriet.
-2. Find seneste deploy-workflow for `main`.
-3. Bekræft at workflow ender med grøn status.
-4. Åbn jeres GitHub Pages URL.
-5. Opdatér siden og verificer, at den mergede ændring er synlig live.
+1. Push ikke direkte til `main`.
+2. Arbejd altid i en feature-branch.
+3. Merge kun til `main`, når ændringen er testet og klar.
 
 ## Del 4: Troubleshooting
 
