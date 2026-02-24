@@ -1,7 +1,7 @@
 # Samarbejdsguide: Git, GitHub, branches & Pull Requests
 
 Del 2 af onboarding-guiden: fokus på samarbejde i team med branches, Pull Requests og sikker merge til `main`.
-Del 1 findes i [template-to-github-pages-setup.md](./template-to-github-pages-setup.md), hvor I opretter repository fra template og sætter deployment op på GitHub Pages.
+Del 1 findes i [template-to-github-pages-setup.md](template-to-github-pages-setup.md), hvor I opretter repository fra template og sætter deployment op på GitHub Pages.
 
 Formål med guiden:
 
@@ -31,6 +31,7 @@ Repository-ejer inviterer gruppemedlemmer som collaborators:
 4. Klik **Add people**.
 5. Indtast GitHub-brugernavn eller e-mail på dine gruppemedlemmer.
 6. Klik **Add [navn] to this repository**.
+   ![[add-collaborators.png]]
 
 ### Step 1.2: Alle collaborators cloner repository
 
@@ -38,6 +39,7 @@ Alle i gruppen:
 
 1. Accepter invitationen.
 2. Clone projektet med **Code** -> **Open with GitHub Desktop**.
+   ![[open-with-github-desktop.png]]
 3. Åbn projektet i VS Code.
 4. Kør:
 
@@ -47,17 +49,18 @@ npm run dev
 ```
 
 5. Åbn lokal URL i browser og test at løsningen kører.
+   ![[localhost-test.png]]
 
 ### Step 1.3: Fordel opgaver i gruppen
 
 Arbejd på forskellige features samtidig:
 
-| Person   | Branch navn                 | Feature           | Beskrivelse                  |
-| -------- | --------------------------- | ----------------- | ---------------------------- |
-| Person A | `feature/add-footer`        | Footer komponent  | Tilføj footer med copyright  |
-| Person B | `feature/improve-homepage`  | Forbedre HomePage | Tilføj hero-sektion og cards |
-| Person C | `feature/add-services-page` | Services-side     | Ny side med services         |
-| Person D | `feature/style-about-page`  | Style About-side  | Forbedre About layout        |
+| Person     | Branch navn                 | Feature           | Beskrivelse                  |
+| ---------- | --------------------------- | ----------------- | ---------------------------- |
+| _Person A_ | `feature/add-footer`        | Footer komponent  | Tilføj footer med copyright  |
+| _Person B_ | `feature/improve-homepage`  | Forbedre HomePage | Tilføj hero-sektion og cards |
+| _Person C_ | `feature/add-services-page` | Services-side     | Ny side med services         |
+| _Person D_ | `feature/style-about-page`  | Style About-side  | Forbedre About layout        |
 
 Hvis I er 3 personer, vælg tre features og gem den sidste til senere.
 
@@ -75,9 +78,9 @@ Hvis I er 3 personer, vælg tre features og gem den sidste til senere.
 4. Klik på branch-navnet nederst til venstre igen.
 5. Vælg **Create new branch...**.
 6. Skriv dit branch-navn fra tabellen, fx `feature/add-footer`, og tryk Enter.
-
-> **Begreb: `Sync Changes`**  
-> `Sync Changes` henter nye ændringer fra GitHub og pusher dine egne ændringer op.
+   ![[create-branch-add-footer.png]]
+   > **Begreb: `Sync Changes`**  
+   > `Sync Changes` henter nye ændringer fra GitHub og pusher dine egne ændringer op.
 
 ### Step 2.2: Implementer din feature
 
@@ -242,7 +245,8 @@ Tjek ændringerne i browseren, før du pusher.
 VS Code Source Control:
 
 1. Klik på **Source Control** i venstre side (eller `Ctrl+Shift+G` / `Cmd+Shift+G`).
-2. Gennemgå filerne under **Changes**.
+2. Gennemgå filerne under **Changes**. Ser det rigtigt ud?
+   ![[changes-in-source-control.png]]
 3. Skriv commit-besked i feltet **Message**.
 4. Klik **Commit**.
 
@@ -252,8 +256,8 @@ Forslag til beskeder:
 - `feat: improve homepage hero section`
 - `feat: add services page and route`
 - `feat: restyle about page`
-
-Du kan bruge Copilot til commit-beskeder, men behold dem korte og beskrivende.
+  ![[commit-message.png]]
+  Du kan bruge Copilot til commit-beskeder, men behold dem korte og beskrivende.
 
 ### Step 2.5: Push branch
 
@@ -264,29 +268,45 @@ VS Code Source Control:
 
 ### Step 2.6: Opret Pull Request
 
-> En Pull Request (PR) er den sikre måde at få kode ind i `main` på.
+En Pull Request (PR) bruges til at få ændringer fra din feature-branch ind i `main` på en sikker måde (merge).
 
-Hvert gruppemedlem opretter en PR fra egen branch til `main`.
+Kort flow:
 
-- Du har lavet ændringer i din feature-branch.
-- PR'en viser præcis hvilke filer og linjer der er ændret.
-- Andre kan læse, kommentere og godkende ændringen.
-- Først derefter merges ændringen til `main`, som er den branch der deployes.
+- Du arbejder i din feature-branch.
+- Du opretter en PR til `main`.
+- Teamet reviewer og godkender.
+- Derefter merges PR'en til `main` (som deployes).
 
-> Kort sagt: **branch = der hvor du arbejder**, **PR = der hvor ændringen vurderes**, **main = stabil kode der deployes**.
-> Sådan finder og opretter du PR'en på GitHub:
+> Kort sagt: **branch = arbejde**, **PR = review**, **main = stabil/deployet kode**.
+
+Sådan opretter du PR'en på GitHub:
 
 1. Gå til repository på GitHub.
-2. Klik **Compare & pull request** (vises ofte efter push).
-3. Hvis knappen ikke vises, klik fanen **Pull requests**.
-4. Klik **New pull request**.
-5. Vælg din branch som `compare` og `main` som `base`.
-6. Klik **Create pull request**.
+2. Klik **Compare & pull request** (typisk synlig lige efter push).
+![[compare-and-pull-request.png]]
+3. Hvis knappen ikke vises: gå til **Pull requests** -> **New pull request**.
+4. Sæt `base` til `main` og `compare` til din feature-branch.
+5. Tjek ændringerne og klik **Create pull request**.
+6. Giv PR'en en kort titel og beskrivelse, og klik **Create pull request** igen.
+![[create-pull-request.png]]
+Brug denne enkle PR-skabelon i beskrivelsen:
+7. **Hvad er ændret?** (1-3 punkter)
+8. **Hvordan er det testet?** (fx `npm run dev` lokalt)
 
-Brug denne enkle PR-skabelon:
 
-1. **Hvad er ændret?** (1-3 punkter)
-2. **Hvordan er det testet?** (fx "testet lokalt med `npm run dev`")
+Når du har oprettet en PR bør du får noget lignende dette:
+![[pull-request.png]]
+Her fra kan du merge pull request ind i main. 
+Tjek at PR hat commit message
+![[confirm-merge-pr.png]]
+
+Så Confirm merge
+Og nu kan du se at det er blevet sucesfull merged
+![[pr-done-delete-branch.png]]
+
+Slet eventuelt dit feature branch hvis du ikke længere skal bruge det. 
+
+Men - oveenstående bør du egenlig lade en anden gøre - en der ikke har skrevet koden, lavet ændringerne. Følg 2.7. 
 
 ### Step 2.7: Review hinandens PRs
 
@@ -295,7 +315,6 @@ Brug denne enkle PR-skabelon:
 > Approve betyder, at PR'en er klar til merge.
 
 Hold review simpelt:
-
 1. Gå til fanen **Pull requests** og vælg en åben PR.
 2. Åbn fanen **Files changed** i PR'en.
 3. Tjek at PR'en:

@@ -1,7 +1,7 @@
 # Fra Template til GitHub Pages: Opsætningsguide
 
 Del 1 af onboarding-guiden: opret jeres eget repository fra denne template, kør projektet lokalt, og deploy til GitHub Pages.  
-Del 2 fortsætter i [collaboration-guide.md](./collaboration-guide.md), hvor I arbejder med branches, Pull Requests og teamets samarbejdsflow.
+Del 2 fortsætter i [collaboration-guide.md](collaboration-guide.md), hvor I arbejder med branches, Pull Requests og teamets samarbejdsflow.
 
 ## 1. Brug templaten
 
@@ -144,7 +144,7 @@ Tip: Deployment tager normalt 1-3 minutter efter push.
 
 I har nu gennemført del 1: oprettelse fra template, lokal opsætning og deployment til GitHub Pages.
 
-Fortsæt med del 2 i [collaboration-guide.md](./collaboration-guide.md), hvor I arbejder med:
+Fortsæt med del 2 i [collaboration-guide.md](collaboration-guide.md), hvor I arbejder med:
 
 - collaborators
 - branches

@@ -51,7 +51,7 @@ npm run dev
 For the full onboarding flow, use the guides in order:
 
 - Part 1: [docs/template-to-github-pages-setup.md](docs/template-to-github-pages-setup.md) (template setup, base path config, and GitHub Pages deployment)
-- Part 2: [docs/collaboration-guide.md](docs/collaboration-guide.md) (branches, Pull Requests, and team collaboration workflow)
+- Part 2: [docs/collaboration-guide.md](collaboration-guide.md) (branches, Pull Requests, and team collaboration workflow)
 
 ### Image Usage in React
 
