@@ -1,13 +1,15 @@
-# Samarbejdsguide (tilpasset denne React Router SPA)
+# Samarbejdsguide for studerende (VS Code + GitHub)
 
-Denne guide er en tilpasset version af samarbejdsforløbet, så den matcher dette repository:
+Denne guide viser trin for trin, hvordan I samarbejder i grupper om dette projekt med GitHub og VS Codes indbyggede Source Control.
 
-- Navigation-komponent: `src/components/Navbar.jsx`
-- Global styling: `src/styles.css` (ikke `src/index.css`)
-- Routes i: `src/App.jsx`
-- Sider i: `src/pages/`
+Formål med guiden:
 
-Git-delen i guiden er skrevet til VS Code's indbyggede Source Control (anbefalet for studerende).
+- invitere collaborators til repository
+- arbejde i egne branches
+- committe og pushe via VS Code
+- oprette og reviewe Pull Requests
+- merge sikkert til `main`
+- verificere deployment på GitHub Pages
 
 ## Del 1: Inviter collaborators
 
@@ -63,14 +65,6 @@ VS Code (anbefalet):
 4. Vælg **Create new branch...**.
 5. Indtast dit branch-navn fra tabellen, fx `feature/add-footer`.
 6. Tryk Enter.
-
-Terminal (hvis du brugte terminalen med Git-kommandoer, vil det se sådan ud):
-
-```bash
-git checkout main
-git pull origin main
-git checkout -b feature/add-footer
-```
 
 ### Step 2.2: Implementer din feature
 
@@ -224,9 +218,9 @@ Tilføj styling i `src/styles.css`:
 
 ```bash
 npm run dev
-npm run lint
-npm run build
 ```
+
+Og i browseren selvfølgelig. Du må aldrig pushe en ændring, uden at have testet den først.
 
 ### Step 2.4: Commit din ændring
 
@@ -244,6 +238,8 @@ Forslag til beskeder:
 - `feat: add services page and route`
 - `feat: restyle about page`
 
+Du kan også bruge Copilot til at generere commit-beskeder, men sørg for at de er beskrivende og følger konventionen.
+
 ### Step 2.5: Push branch
 
 VS Code Source Control:
@@ -251,31 +247,47 @@ VS Code Source Control:
 1. Klik **Publish Branch** (første gang), eller **Sync Changes**.
 2. Bekræft at branchen pushes til `origin`.
 
-Terminal (valgfrit):
-
-```bash
-git push -u origin <din-branch>
-```
-
 ### Step 2.6: Opret Pull Request
 
-I PR-beskrivelsen:
+Hver person opretter en lille PR fra egen branch til `main`.
 
-1. Hvad er ændret?
-2. Hvorfor er det ændret?
-3. Hvordan er det testet?
-4. Link til issue (fx `Closes #12`)
+Hvad er en PR?
+En Pull Request (PR) er en forespørgsel om at få dine ændringer fra din branch ind i `main`.
+Den bruges til at vise ændringerne, få feedback og merge sikkert uden at arbejde direkte på `main`.
+
+Sådan finder og opretter du PR'en på GitHub:
+
+1. Gå til repository på GitHub.
+2. Kig efter knappen **Compare & pull request** (vises ofte efter push) og klik.
+3. Hvis knappen ikke vises, klik fanen **Pull requests**.
+4. Klik **New pull request**.
+5. Vælg din branch som `compare` og `main` som `base`.
+6. Klik **Create pull request**.
+
+Brug denne enkle PR-skabelon:
+
+1. **Hvad er ændret?** (1-3 punkter)
+2. **Hvordan er det testet?** (fx "testet lokalt med `npm run dev`")
 
 ### Step 2.7: Review hinandens PRs
 
-Hver person reviewer mindst en andens PR under **Files changed** og giver enten:
+Hold review simpelt:
 
-- approval, eller
-- konkret feedback med forbedringsforslag.
+1. Gå til fanen **Pull requests** og vælg en åben PR.
+2. Åbn fanen **Files changed** i PR'en.
+3. Tjek at PR'en:
+   - har en kort beskrivelse
+   - er testet lokalt
+   - ikke overlapper tydeligt med andres ændringer
+4. Klik **Review changes** og vælg **Approve**, eller skriv en kort kommentar.
+
+Tip: Filtrér på **Open** under Pull requests, så I kun ser aktive PRs.
 
 ### Step 2.8: Merge PRs en ad gangen
 
-Merge kun en PR ad gangen for at minimere konflikter.
+Merge PRs én ad gangen for at minimere konflikter.
+
+Tip: I kan vælge, at repository-ejeren står for merge, hvis I vil gøre processen endnu enklere.
 
 ### Step 2.9: Opdater din branch med `main`
 
@@ -289,16 +301,6 @@ Hvis din PR ikke er merged endnu, brug VS Code:
 6. Vælg `main`.
 7. Hvis der opstår konflikter: løs dem i editoren, commit, og klik **Sync Changes**.
 
-Terminal (valgfrit):
-
-```bash
-git checkout main
-git pull origin main
-git checkout <din-branch>
-git merge main
-git push
-```
-
 ### Step 2.10: Opdater lokal `main` efter alle merges
 
 VS Code Source Control:
@@ -310,6 +312,12 @@ VS Code Source Control:
 ```bash
 npm run dev
 ```
+
+Kort opsummering af PR-flow:
+
+1. Alle laver branch + PR.
+2. PRs reviews kort og merges én ad gangen.
+3. Alle synkroniserer `main` bagefter.
 
 ## Del 3: Best Practices
 
@@ -339,7 +347,17 @@ Undgå:
 1. En feature per PR.
 2. Hold PRs små.
 3. Test altid for PR.
-4. Besvar review-kommentarer.
+4. Hold beskrivelsen kort: hvad er ændret og hvordan er det testet.
+
+### Verificer automatisk deploy efter merge
+
+Efter hver merge til `main` skal I bekræfte, at løsningen er deployet:
+
+1. Gå til **Actions** i GitHub-repositoriet.
+2. Find seneste deploy-workflow for `main`.
+3. Bekræft at workflow ender med grøn status.
+4. Åbn jeres GitHub Pages URL.
+5. Opdatér siden og verificer, at den mergede ændring er synlig live.
 
 ## Del 4: Troubleshooting
 
