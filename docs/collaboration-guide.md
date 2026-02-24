@@ -1,4 +1,4 @@
-# Samarbejdsguide for studerende (VS Code + GitHub)
+# Samarbejdsguide: Git, GitHub, branches & Pull Requests
 
 Denne guide viser trin for trin, hvordan I samarbejder i grupper om dette projekt med GitHub og VS Codes indbyggede Source Control.
 
