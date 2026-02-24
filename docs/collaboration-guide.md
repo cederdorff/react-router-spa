@@ -283,30 +283,31 @@ Sådan opretter du PR'en på GitHub:
 
 1. Gå til repository på GitHub.
 2. Klik **Compare & pull request** (typisk synlig lige efter push).
-![Compare and pull request](./images/compare-and-pull-request.png)
+   ![Compare and pull request](./images/compare-and-pull-request.png)
 3. Hvis knappen ikke vises: gå til **Pull requests** -> **New pull request**.
 4. Sæt `base` til `main` og `compare` til din feature-branch.
 5. Tjek ændringerne og klik **Create pull request**.
 6. Giv PR'en en kort titel og beskrivelse, og klik **Create pull request** igen.
-![Create pull request](./images/create-pull-request.png)
+   ![Create pull request](./images/create-pull-request.png)
+
 Brug denne enkle PR-skabelon i beskrivelsen:
-7. **Hvad er ændret?** (1-3 punkter)
-8. **Hvordan er det testet?** (fx `npm run dev` lokalt)
 
+- **Hvad er ændret?** (1-3 punkter)
+- **Hvordan er det testet?** (fx `npm run dev` lokalt)
 
-Når du har oprettet en PR bør du får noget lignende dette:
-![Pull request](./images/pull-request.png)
-Her fra kan du merge pull request ind i main. 
-Tjek at PR hat commit message
-![Confirm merge PR](./images/confirm-merge-pr.png)
+Efter PR'en er oprettet:
 
-Så Confirm merge
-Og nu kan du se at det er blevet sucesfull merged
-![PR done delete branch](./images/pr-done-delete-branch.png)
+1. Bekræft at PR'en ser korrekt ud (filer, titel, beskrivelse).
+   ![Pull request](./images/pull-request.png)
+2. Bed en anden i gruppen om at reviewe PR'en (se step 2.7).
+3. Når PR'en er godkendt, klik **Merge pull request**.
+4. Tjek merge-dialogen og klik **Confirm merge**:
+   ![Confirm merge PR](./images/confirm-merge-pr.png)
+5. Bekræft at status viser merged.
+   ![PR done delete branch](./images/pr-done-delete-branch.png)
+6. Klik evt. **Delete branch**, hvis feature-branchen ikke længere skal bruges.
 
-Slet eventuelt dit feature branch hvis du ikke længere skal bruge det. 
-
-Men - oveenstående bør du egenlig lade en anden gøre - en der ikke har skrevet koden, lavet ændringerne. Følg 2.7. 
+Tip: Det er bedst, at en anden end forfatteren selv merger PR'en.
 
 ### Step 2.7: Review hinandens PRs
 
@@ -315,6 +316,7 @@ Men - oveenstående bør du egenlig lade en anden gøre - en der ikke har skreve
 > Approve betyder, at PR'en er klar til merge.
 
 Hold review simpelt:
+
 1. Gå til fanen **Pull requests** og vælg en åben PR.
 2. Åbn fanen **Files changed** i PR'en.
 3. Tjek at PR'en:
