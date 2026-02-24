@@ -31,7 +31,7 @@ Repository-ejer inviterer gruppemedlemmer som collaborators:
 4. Klik **Add people**.
 5. Indtast GitHub-brugernavn eller e-mail på dine gruppemedlemmer.
 6. Klik **Add [navn] to this repository**.
-   ![[add-collaborators.png]]
+   ![Add collaborators](./images/add-collaborators.png)
 
 ### Step 1.2: Alle collaborators cloner repository
 
@@ -39,7 +39,7 @@ Alle i gruppen:
 
 1. Accepter invitationen.
 2. Clone projektet med **Code** -> **Open with GitHub Desktop**.
-   ![[open-with-github-desktop.png]]
+   ![Open with GitHub Desktop](./images/open-with-github-desktop.png)
 3. Åbn projektet i VS Code.
 4. Kør:
 
@@ -49,7 +49,7 @@ npm run dev
 ```
 
 5. Åbn lokal URL i browser og test at løsningen kører.
-   ![[localhost-test.png]]
+   ![Localhost test](./images/localhost-test.png)
 
 ### Step 1.3: Fordel opgaver i gruppen
 
@@ -78,7 +78,7 @@ Hvis I er 3 personer, vælg tre features og gem den sidste til senere.
 4. Klik på branch-navnet nederst til venstre igen.
 5. Vælg **Create new branch...**.
 6. Skriv dit branch-navn fra tabellen, fx `feature/add-footer`, og tryk Enter.
-   ![[create-branch-add-footer.png]]
+   ![Create branch add footer](./images/create-branch-add-footer.png)
    > **Begreb: `Sync Changes`**  
    > `Sync Changes` henter nye ændringer fra GitHub og pusher dine egne ændringer op.
 
@@ -246,7 +246,7 @@ VS Code Source Control:
 
 1. Klik på **Source Control** i venstre side (eller `Ctrl+Shift+G` / `Cmd+Shift+G`).
 2. Gennemgå filerne under **Changes**. Ser det rigtigt ud?
-   ![[changes-in-source-control.png]]
+   ![Changes in source control](./images/changes-in-source-control.png)
 3. Skriv commit-besked i feltet **Message**.
 4. Klik **Commit**.
 
@@ -256,7 +256,7 @@ Forslag til beskeder:
 - `feat: improve homepage hero section`
 - `feat: add services page and route`
 - `feat: restyle about page`
-  ![[commit-message.png]]
+  ![Commit message](./images/commit-message.png)
   Du kan bruge Copilot til commit-beskeder, men behold dem korte og beskrivende.
 
 ### Step 2.5: Push branch
@@ -283,26 +283,26 @@ Sådan opretter du PR'en på GitHub:
 
 1. Gå til repository på GitHub.
 2. Klik **Compare & pull request** (typisk synlig lige efter push).
-![[compare-and-pull-request.png]]
+![Compare and pull request](./images/compare-and-pull-request.png)
 3. Hvis knappen ikke vises: gå til **Pull requests** -> **New pull request**.
 4. Sæt `base` til `main` og `compare` til din feature-branch.
 5. Tjek ændringerne og klik **Create pull request**.
 6. Giv PR'en en kort titel og beskrivelse, og klik **Create pull request** igen.
-![[create-pull-request.png]]
+![Create pull request](./images/create-pull-request.png)
 Brug denne enkle PR-skabelon i beskrivelsen:
 7. **Hvad er ændret?** (1-3 punkter)
 8. **Hvordan er det testet?** (fx `npm run dev` lokalt)
 
 
 Når du har oprettet en PR bør du får noget lignende dette:
-![[pull-request.png]]
+![Pull request](./images/pull-request.png)
 Her fra kan du merge pull request ind i main. 
 Tjek at PR hat commit message
-![[confirm-merge-pr.png]]
+![Confirm merge PR](./images/confirm-merge-pr.png)
 
 Så Confirm merge
 Og nu kan du se at det er blevet sucesfull merged
-![[pr-done-delete-branch.png]]
+![PR done delete branch](./images/pr-done-delete-branch.png)
 
 Slet eventuelt dit feature branch hvis du ikke længere skal bruge det. 
 
