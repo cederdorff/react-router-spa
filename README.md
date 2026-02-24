@@ -51,6 +51,7 @@ npm run dev
 For a full step-by-step onboarding guide (template setup, GitHub Pages, base path config, and deployment), see:
 
 - [docs/getting-started.md](docs/getting-started.md)
+- [docs/collaboration-guide.md](docs/collaboration-guide.md)
 
 ### Image Usage in React
 

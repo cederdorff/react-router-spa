@@ -61,6 +61,16 @@ Example: if your repository is `react-web-app`, use:
 
 ## 6. Commit and Push
 
+Preferred (VS Code Source Control):
+
+1. Open Source Control (`Ctrl+Shift+G` on Windows/Linux, `Cmd+Shift+G` on macOS).
+2. Review your changed files.
+3. Add a commit message.
+4. Click **Commit**.
+5. Click **Sync Changes** (push to GitHub).
+
+Reference (GitHub Desktop):
+
 1. In GitHub Desktop, write a commit message.
 2. Click **Commit to main**.
 3. Click **Sync Changes** (push to GitHub).
@@ -120,7 +130,8 @@ Reference (GitHub Desktop):
 
 1. Open your repository on GitHub.
 2. Go to the **Actions** tab.
-3. Wait for the deployment workflow to run and finish with a green check.
+3. Wait for the deployment workflow to run and finish with a green/blue check.
+   ![GitHub Actions workflow running](./images/actions-running.png)
 4. Open your live site URL and refresh the page.
 5. Confirm your text change is visible online.
 
