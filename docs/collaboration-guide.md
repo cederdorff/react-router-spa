@@ -19,6 +19,9 @@ Lav derfor ændringer i feature-branches og merge via Pull Requests.
 
 Repository-ejer inviterer gruppemedlemmer som collaborators:
 
+> **Begreb: Collaborator**  
+> En collaborator er en person, der har adgang til at arbejde i repository'et.
+
 1. Gå til repository på GitHub.
 2. Klik på **Settings**.
 3. Klik på **Collaborators** i venstre menu.
@@ -57,9 +60,9 @@ Hvis I er 3 personer, vælg tre features og gem den sidste til senere.
 
 ## Del 2: Samarbejde med branches og Pull Requests
 
-Hvad er en branch?
-En branch er en separat arbejdsgren af koden, hvor du kan lave ændringer uden at påvirke `main`.
-Når ændringen er klar, sendes den til `main` via en Pull Request.
+> **Begreb: Branch**  
+> En branch er en separat arbejdsgren af koden, hvor du kan lave ændringer uden at påvirke `main`.  
+> Når ændringen er klar, sendes den til `main` via en Pull Request.
 
 ### Step 2.1: Opret din branch
 
@@ -69,6 +72,9 @@ Når ændringen er klar, sendes den til `main` via en Pull Request.
 4. Vælg **Create new branch...**.
 5. Indtast dit branch-navn fra tabellen, fx `feature/add-footer`.
 6. Tryk Enter.
+
+> **Begreb: `Sync Changes`**  
+> `Sync Changes` henter nye ændringer fra GitHub og pusher dine egne ændringer op.
 
 ### Step 2.2: Implementer din feature
 
@@ -279,6 +285,10 @@ Brug denne enkle PR-skabelon:
 
 ### Step 2.7: Review hinandens PRs
 
+> **Begreb: Review og Approve**  
+> Et review er en gennemgang af PR'ens ændringer.  
+> Approve betyder, at PR'en er klar til merge.
+
 Hold review simpelt:
 
 1. Gå til fanen **Pull requests** og vælg en åben PR.
@@ -294,6 +304,9 @@ Tip: Filtrér på **Open**, så I kun ser aktive PRs.
 ### Step 2.8: Merge PRs en ad gangen
 
 Merge PRs én ad gangen for at minimere konflikter.
+
+> **Begreb: Merge**  
+> Merge betyder at samle ændringer fra en branch/PR ind i `main`.
 
 Tip: Lad evt. repository-ejeren stå for merge.
 
@@ -333,6 +346,9 @@ Hvornår:
 - når GitHub viser **out of date**
 - når PR'en har merge-konflikt
 - når flere PRs er merged siden du startede
+
+> **Begreb: Out of date**  
+> Det betyder, at din branch mangler nyere ændringer fra `main`.
 
 Hvordan (VS Code):
 
@@ -386,6 +402,10 @@ Kort opsummering af PR-flow:
 ### Verificer automatisk deploy efter merge
 
 Efter hver merge til `main`:
+
+> **Begreb: Workflow og Deploy**  
+> Et workflow i GitHub Actions er en automatisk proces, der bygger og udgiver projektet.  
+> Deploy er den live version af appen på GitHub Pages.
 
 1. Gå til **Actions** i GitHub-repositoriet.
 2. Find seneste deploy-workflow for `main`.
