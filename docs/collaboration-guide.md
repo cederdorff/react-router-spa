@@ -422,9 +422,9 @@ Efter PR'en er oprettet:
 2. Bed en anden i gruppen om at reviewe PR'en (se step 2.7).
 3. Når PR'en er godkendt, klik **Merge pull request**.
 4. Tjek merge-dialogen og klik **Confirm merge**:
-   ![Confirm merge PR](./images/confirm-merge-pr.png)
+   ![PR confirm merge dialog](./images/pr-confirm-merge-dialog.png)
 5. Bekræft at status viser merged.
-   ![PR done delete branch](./images/pr-done-delete-branch.png)
+   ![PR merged status and delete branch](./images/pr-merged-status-delete-branch.png)
 6. Klik evt. **Delete branch**, hvis feature-branchen ikke længere skal bruges.
 
 Tip: Det er bedst, at en anden end forfatteren selv merger PR'en.
@@ -440,9 +440,9 @@ Hold review simpelt:
 1. Gå til fanen **Pull requests**:
    ![All pull requests (open)](./images/all-pull-requests.png)
 2. Åbn PR'en.
-   ![Pull request overview (open)](./images/pr-feature-homepage.png)
+   ![PR conversation view (open)](./images/pr-conversation-view-open.png)
 3. Gå til fanen **Files changed**:
-   ![Pull request overview (tabs)](./images/pr-files-changed.png)
+   ![PR files changed tab](./images/pr-files-changed-tab.png)
    Brug denne fane til selve reviewet: her kan du se præcis hvilke linjer der er ændret, og kommentere direkte i koden.
 4. Tjek at PR'en:
    - har en kort beskrivelse
@@ -450,7 +450,7 @@ Hold review simpelt:
    - ikke overlapper tydeligt med andres ændringer
 5. Klik **Review changes** og vælg **Approve**, eller skriv en kort kommentar.
 6. Gå tilbage til fanen **Conversation**, så PR'en kan merges i næste step (Step 2.8: Merge PRs en ad gangen).
-   ![Pull request overview (open)](./images/pr-feature-homepage.png)
+   ![PR conversation view (open)](./images/pr-conversation-view-open.png)
 
 Tip: Filtrér på **Open**, så I kun ser aktive PRs.
 
@@ -466,8 +466,11 @@ Sådan merger I PR'en:
 1. Åbn PR'en i fanen **Conversation**.
 2. Bekræft at PR'en er reviewed/godkendt.
 3. Klik **Merge pull request**.
+   ![PR conversation view (open)](./images/pr-conversation-view-open.png)
 4. Klik **Confirm merge**.
+   ![PR confirm merge dialog](./images/pr-confirm-merge-dialog.png)
 5. Bekræft at status viser merged.
+   ![PR merged status and delete branch](./images/pr-merged-status-delete-branch.png)
 6. Klik evt. **Delete branch**, hvis branchen ikke længere skal bruges.
 
 Tip: Lad gerne en anden end forfatteren stå for merge.
