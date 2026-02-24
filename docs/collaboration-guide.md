@@ -477,7 +477,7 @@ Tip: Lad gerne en anden end forfatteren stå for merge.
 VS Code Source Control:
 
 1. Skift til branch `main`.
-2. Klik **Sync Changes** for at hente den mergede ændring ned lokalt.
+2. Klik **Sync Changes** (de cirkulære pile nederst til venstre) for at hente den mergede ændring ned lokalt.
 3. Test appen:
 
 ```bash
@@ -521,9 +521,9 @@ Hvordan (VS Code):
 5. Vælg **Git: Merge Branch...** og vælg `main`.
 6. Løs evt. konflikter i editoren, commit, og klik **Sync Changes**.
 
-### Step 2.12: Øvelse - simulér en merge-konflikt (anbefalet)
+### Step 2.12: Øvelse - simulér en merge-konflikt
 
-Formål: Prøv en kontrolleret konflikt og løs den i VS Code.
+Prøv en kontrolleret konflikt og løs den i VS Code.
 
 Opsætning:
 
@@ -561,7 +561,7 @@ Kort opsummering af PR-flow:
 2. PRs reviewes kort og merges én ad gangen.
 3. Efter merge synkroniserer alle lokal `main`.
 
-### Verificer automatisk deploy efter merge
+### 2.13: Verificer automatisk deploy efter merge
 
 Efter hver merge til `main`:
 
@@ -578,6 +578,8 @@ Efter hver merge til `main`:
 ## Del 3: Best Practices
 
 ### Gode commit-beskeder
+
+Her skal du blot læse og forstå, hvordan gode commit-beskeder ser ud. De skal være korte, præcise og følge et mønster.
 
 Godt:
 
@@ -612,6 +614,8 @@ Undgå:
 3. Merge kun til `main`, når ændringen er testet og klar.
 
 ## Del 4: Troubleshooting
+
+Ikke en øvelse, men en tjekliste til at løse almindelige problemer.
 
 ### Problem: GitHub Pages viser 404
 
