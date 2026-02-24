@@ -1,5 +1,8 @@
 # Samarbejdsguide: Git, GitHub, branches & Pull Requests
 
+Del 2 af onboarding-guiden: fokus på samarbejde i team med branches, Pull Requests og sikker merge til `main`.
+Del 1 findes i [template-to-github-pages-setup.md](./template-to-github-pages-setup.md), hvor I opretter repository fra template og sætter deployment op på GitHub Pages.
+
 Formål med guiden:
 
 - invitere collaborators til repository
