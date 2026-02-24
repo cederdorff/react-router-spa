@@ -1,148 +1,148 @@
-# From Template to GitHub Pages: Setup Guide
+# Fra Template til GitHub Pages: Opsætningsguide
 
-Part 1 of the onboarding guide: set up your own repository from this template and deploy it to GitHub Pages.  
-Part 2 continues in [collaboration-guide.md](./collaboration-guide.md), where you work with branches, Pull Requests, and team collaboration flow.
+Del 1 af onboarding-guiden: opret jeres eget repository fra denne template, kør projektet lokalt, og deploy til GitHub Pages.  
+Del 2 fortsætter i [collaboration-guide.md](./collaboration-guide.md), hvor I arbejder med branches, Pull Requests og teamets samarbejdsflow.
 
-## 1. Use the Template
+## 1. Brug templaten
 
-1. Open the template repository: https://github.com/cederdorff/react-router-spa
-2. Click **Use this template** -> **Create a new repository**.
-3. Enter a repository name (for example, `react-router-app`, `customer-experience-exam`).
-4. Set visibility to **Public** (recommended for GitHub Pages and for RACE access).
-5. Click **Create repository**.
+1. Åbn template-repository: https://github.com/cederdorff/react-router-spa
+2. Klik **Use this template** -> **Create a new repository**.
+3. Indtast et repository-navn (fx `react-router-app`, `customer-experience-exam`).
+4. Sæt synlighed til **Public** (anbefalet ift. GitHub Pages og RACE-adgang).
+5. Klik **Create repository**.
 
-## 2. Enable GitHub Pages
+## 2. Aktivér GitHub Pages
 
-1. In your new repository, go to **Settings**.
-2. In the left menu, click **Pages**.
-3. Under **Build and deployment**, set **Source** to **GitHub Actions**.
-4. Enable **Enforce HTTPS**.
+1. Gå til jeres nye repository og vælg **Settings**.
+2. Klik **Pages** i venstremenuen.
+3. Under **Build and deployment**: sæt **Source** til **GitHub Actions**.
+4. Aktivér **Enforce HTTPS**.
 
 ![GitHub Pages settings with GitHub Actions source](./images/pages-settings.png)
 
-## 3. Clone the Repository
+## 3. Clone repository
 
-1. Go to the repository front page (**Code** tab).
-2. Click **Code** -> **Open with GitHub Desktop**.
-3. In GitHub Desktop, choose where to save the project.
-4. After cloning, click **Open in Visual Studio Code**.
+1. Gå til repository-forsiden (fanen **Code**).
+2. Klik **Code** -> **Open with GitHub Desktop**.
+3. Vælg, hvor projektet skal gemmes lokalt.
+4. Efter clone: klik **Open in Visual Studio Code**.
 
 ![Repository Code menu with Open with GitHub Desktop](./images/code-open-github-desktop.png)
 
-## 4. Run the Project Locally
+## 4. Kør projektet lokalt
 
-In the project folder, in VS Code, run:
+I projektmappen i VS Code, kør:
 
 ```bash
 npm install
 npm run dev
 ```
 
-Then open the local URL shown in the terminal and verify the app works in your browser.
+Åbn derefter den lokale URL fra terminalen og verificér, at appen virker i browseren.
 
-## 5. Configure the Base Path
+## 5. Konfigurer base path
 
-1. Open `package.json`.
-2. Find the `base` field.
-3. Set it to your repository name, with a leading and trailing slash:
+1. Åbn `package.json`.
+2. Find feltet `base`.
+3. Sæt det til jeres repository-navn med både foranstillet og efterstillet slash:
 
 ```json
 "base": "/my-repo-name/"
 ```
 
-Example: if your repository is `react-web-app`, use:
+Eksempel: Hvis repository hedder `react-web-app`, brug:
 
 ```json
 "base": "/react-web-app/"
 ```
 
-4. Optional: update `"name"` to match your project name (without slashes).
+4. Valgfrit: Opdatér også `"name"`, så det matcher projektets navn (uden slashes).
 
 ![package.json with name and base highlighted](./images/package-json-base.png)
 
-## 6. Commit and Push
+## 6. Commit og push
 
-Preferred (VS Code Source Control):
+Foretrukket (VS Code Source Control):
 
-1. Open Source Control (`Ctrl+Shift+G` on Windows/Linux, `Cmd+Shift+G` on macOS).
-2. Review your changed files.
-3. Add a commit message.
-4. Click **Commit**.
-5. Click **Sync Changes** (push to GitHub).
+1. Åbn Source Control (`Ctrl+Shift+G` på Windows/Linux, `Cmd+Shift+G` på macOS).
+2. Gennemgå ændrede filer.
+3. Skriv en commit-besked.
+4. Klik **Commit**.
+5. Klik **Sync Changes** (push til GitHub).
 
 Reference (GitHub Desktop):
 
-1. In GitHub Desktop, write a commit message.
-2. Click **Commit to main**.
-3. Click **Sync Changes** (push to GitHub).
+1. Skriv en commit-besked i GitHub Desktop.
+2. Klik **Commit to main**.
+3. Klik **Sync Changes** (push til GitHub).
 
 ![Commit and Sync Changes in GitHub Desktop](./images/github-desktop-sync.png)
 
-## 7. Verify Deployment
+## 7. Verificér deployment
 
-1. In GitHub, open the **Actions** tab.
+1. Åbn fanen **Actions** på GitHub.
    ![GitHub Actions workflow running](./images/actions-running.png)
-2. Wait for the deploy workflow to complete successfully.
-3. Open the finished workflow run.
+2. Vent til deploy-workflow er gennemført uden fejl.
+3. Åbn den afsluttede workflow-kørsel.
    ![GitHub Actions workflow completed](./images/actions-completed.png)
-4. Click the deployed URL and test the site in your browser.
+4. Klik på deployment-URL'en og test siden i browseren.
    ![Deployment URL in workflow summary](./images/deployment-url.png)  
    ![The Deployed solution in browser](./images/deployed-solution.png)
 
-Deployment complete.
+Deployment gennemført.
 
-## 8. Test Deployment with a Small Change
+## 8. Test deployment med en lille ændring
 
-This step confirms your GitHub Pages deployment updates after a new push.
+Dette trin bekræfter, at jeres GitHub Pages-deployment opdateres efter et nyt push.
 
-### 8.1 Make a Small Change
+### 8.1 Lav en lille ændring
 
-Open `src/pages/HomePage.jsx` and update a visible text string. For example:
+Åbn `src/pages/HomePage.jsx` og opdatér en synlig tekststreng. For eksempel:
 
 ```jsx
 <p>Welcome to the home page.</p>
 ```
 
-to:
+til:
 
 ```jsx
 <p>Welcome to my first React app on GitHub Pages.</p>
 ```
 
-### 8.2 Commit and Push the Change
+### 8.2 Commit og push ændringen
 
-Preferred (VS Code Source Control):
+Foretrukket (VS Code Source Control):
 
-1. Open Source Control (`Ctrl+Shift+G` on Windows/Linux, `Cmd+Shift+G` on macOS).
-2. Confirm the file change.
-3. Add commit message: `"Update homepage text"`.
-4. Click **Commit**.
-5. Click **Sync Changes**.
+1. Åbn Source Control (`Ctrl+Shift+G` på Windows/Linux, `Cmd+Shift+G` på macOS).
+2. Bekræft filændringen.
+3. Tilføj commit-besked: `"Update homepage text"`.
+4. Klik **Commit**.
+5. Klik **Sync Changes**.
 
 Reference (GitHub Desktop):
 
-1. Open GitHub Desktop.
-2. Confirm the change in `src/pages/HomePage.jsx`.
-3. Add commit message: `"Update homepage text"`.
-4. Click **Commit to main**.
-5. Click **Push origin** (or **Sync Changes**).
+1. Åbn GitHub Desktop.
+2. Bekræft ændringen i `src/pages/HomePage.jsx`.
+3. Tilføj commit-besked: `"Update homepage text"`.
+4. Klik **Commit to main**.
+5. Klik **Push origin** (eller **Sync Changes**).
 
-### 8.3 Follow the Deployment
+### 8.3 Følg deployment
 
-1. Open your repository on GitHub.
-2. Go to the **Actions** tab.
-3. Wait for the deployment workflow to run and finish with a green/blue check.
+1. Åbn jeres repository på GitHub.
+2. Gå til fanen **Actions**.
+3. Vent til deployment-workflow kører færdigt med grønt/blåt flueben.
    ![GitHub Actions workflow running](./images/actions-running.png)
-4. Open your live site URL and refresh the page.
-5. Confirm your text change is visible online.
+4. Åbn jeres live-site URL og opdatér siden.
+5. Bekræft, at tekstændringen er synlig online.
 
-Tip: deployment usually takes 1-3 minutes after push.
+Tip: Deployment tager normalt 1-3 minutter efter push.
 
 ---
 
-## Next Steps
+## Næste skridt
 
-Du har nu gennemført del 1: oprettelse fra template, lokal opsætning og deployment til GitHub Pages.
+I har nu gennemført del 1: oprettelse fra template, lokal opsætning og deployment til GitHub Pages.
 
 Fortsæt med del 2 i [collaboration-guide.md](./collaboration-guide.md), hvor I arbejder med:
 
