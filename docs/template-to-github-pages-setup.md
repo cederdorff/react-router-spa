@@ -24,10 +24,10 @@ Del 2 fortsætter i [collaboration-guide.md](collaboration-guide.md), hvor I arb
 
 1. Gå til repository-forsiden (fanen **Code**).
 2. Klik **Code** -> **Open with GitHub Desktop**.
+   ![Repository Code menu with Open with GitHub Desktop](./images/open-with-github-desktop.png)
 3. Vælg, hvor projektet skal gemmes lokalt.
 4. Efter clone: klik **Open in Visual Studio Code**.
-
-![Repository Code menu with Open with GitHub Desktop](./images/code-open-github-desktop.png)
+   ![Repository Code menu with Open with GitHub Desktop](./images/open-vs-code-with-github-desktop.png)
 
 ## 4. Kør projektet lokalt
 

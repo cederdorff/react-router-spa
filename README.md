@@ -1,124 +1,136 @@
 # React Router SPA Template
 
-A minimal React 19 + Vite + React Router v7 single-page application template, ready for deployment to GitHub Pages.
+Et minimalt React 19 + Vite + React Router v7 template-projekt, klar til undervisning, samarbejde i branches og deployment til GitHub Pages.
 
-## Features
+## Hvad projektet indeholder
 
-- React 19, Vite, and SWC for fast development
-- React Router v7 with configurable basename for subpath hosting
-- Centralized dark theme styling (`src/styles.css`)
-- Three demo pages: Home, About, Contact, plus a custom 404 page
-- Image usage examples (import, public folder, external)
-- GitHub Actions workflow for automatic deployment to GitHub Pages
-- SPA routing support on GitHub Pages (404 fallback)
+- React 19 + Vite + SWC
+- React Router v7 med `BrowserRouter` og `basename` via `import.meta.env.BASE_URL`
+- 4 sider out-of-the-box: `Home`, `About`, `Contact`, `NotFound`
+- Eksempler på billedbrug i `HomePage`:
+  - import fra `src/assets`
+  - fil fra `public`
+  - ekstern URL
+- GitHub Actions workflow til automatisk deploy på push til `main`
+- SPA-fallback på GitHub Pages via `404.html`
 
-## Project Structure
+## Kom hurtigt i gang
 
+```bash
+npm install
+npm run dev
 ```
+
+Appen starter lokalt via Vite (typisk `http://localhost:5173`).
+
+## Scripts
+
+```bash
+npm run dev      # start udviklingsserver
+npm run build    # production build
+npm run preview  # preview af build lokalt
+npm run lint     # eslint
+```
+
+## Projektstruktur
+
+```text
 src/
-  App.jsx           # Main app with routes
-  main.jsx          # Entry, sets up BrowserRouter
-  styles.css        # All styles in one file
-  assets/           # Example image assets
+  App.jsx               # Routes
+  main.jsx              # BrowserRouter + basename
+  styles.css            # Global styling
+  assets/               # Lokale assets (fx example.svg)
   components/
-    Navbar.jsx      # Navigation bar with NavLink
+    Navbar.jsx
   pages/
     HomePage.jsx
     AboutPage.jsx
     ContactPage.jsx
     NotFoundPage.jsx
 public/
-  logo.webp         # Example public image
-  # (No 404.html needed; see deployment notes)
-index.html
-vite.config.js
+  logo.webp             # Public asset
 .github/
   workflows/
-    deploy.yml      # GitHub Actions deployment workflow
+    deploy.yml          # Build + deploy til GitHub Pages
 ```
 
-## Usage
+## Onboarding (Del 1 + Del 2)
 
-### Development
+Brug guiderne i denne rækkefølge:
 
-```sh
-npm install
-npm run dev
+1. Del 1: [docs/template-to-github-pages-setup.md](docs/template-to-github-pages-setup.md)
+   Fokus: opret repository fra template, lokal opsætning, `base`-konfiguration og deployment.
+2. Del 2: [docs/collaboration-guide.md](docs/collaboration-guide.md)
+   Fokus: collaborators, branches, Pull Requests, review og merge-flow.
+
+## Opgaver i Del 2 (teamarbejde)
+
+I samarbejdsguiden fordeles opgaver typisk sådan:
+
+- Person A: tilføj `Footer` komponent
+- Person B: forbedr `HomePage` layout (behold billedeksempler)
+- Person C: tilføj `ServicesPage` + route + nav-link
+- Person D: forbedr indhold/layout på `AboutPage`
+
+Bemærk: Disse ændringer er øvelsesopgaver i Del 2 og er ikke nødvendigvis en del af base-templaten på `main`.
+
+## Deployment til GitHub Pages
+
+`package.json` indeholder en `base` værdi, som bruges ved build:
+
+```json
+{
+  "base": "/react-router-spa/"
+}
 ```
 
-### New Project Walkthrough
+Hvis repository-navnet ændres, opdatér `base` tilsvarende og push igen.
 
-For the full onboarding flow, use the guides in order:
+Workflowet i `.github/workflows/deploy.yml`:
 
-- Part 1: [docs/template-to-github-pages-setup.md](docs/template-to-github-pages-setup.md) (template setup, base path config, and GitHub Pages deployment)
-- Part 2: [docs/collaboration-guide.md](collaboration-guide.md) (branches, Pull Requests, and team collaboration workflow)
+- bygger projektet
+- deployer til GitHub Pages
+- kopierer `index.html` til `404.html` (så client-side routing virker på refresh/deep links)
 
-### Image Usage in React
+## Routing
 
-1. **Import from `src/assets`**  
-   Import at the top of your component. Vite will bundle and hash the file.
+Routes er defineret i `src/App.jsx`.
+
+- `/` -> `HomePage`
+- `/about` -> `AboutPage`
+- `/contact` -> `ContactPage`
+- `*` -> `NotFoundPage`
+
+## Billeder i React
+
+Projektet viser 3 måder at bruge billeder på i `HomePage`. Brug den metode, der passer til behovet:
+
+1. `src/assets` (import i komponenten)  
+   Bruges når billedet er en del af appens kildekode.
+   - God til illustrationer, ikoner og billeder der versionstyres med koden.
+   - Vite håndterer filen i build-processen og giver den et unikt filnavn.
    ```jsx
-   import logo from "../assets/logo.svg";
-   <img src={logo} alt="Logo" />;
+   import logo from "../assets/example.svg";
+   <img src={logo} alt="Eksempel-logo" />;
    ```
-2. **Public folder**  
-   Place the image in `/public` and reference by path (e.g. `logo.webp`).
+
+2. `public` (direkte filsti, uden import)  
+   Bruges når billedet skal ligge på en fast offentlig sti.
+   - God til fx logo/favicons eller filer, du vil kunne referere direkte til.
+   - Filen bliver ikke importeret i JavaScript.
    ```jsx
-   <img src="logo.webp" alt="Logo from public" />
+   <img src="logo.webp" alt="Logo fra public" />;
    ```
-3. **External URL**  
-   Use a full URL for images from the internet.
 
-### Routing
+3. Ekstern URL  
+   Bruges når billedet kommer fra en ekstern kilde.
+   - God til API-data, CDN eller tredjeparts-indhold.
+   - Kræver internetadgang og at URL'en er stabil.
+   ```jsx
+   <img src="https://picsum.photos/200" alt="Eksternt billede" />;
+   ```
 
-- All routes are defined in `src/App.jsx`.
-- Navigation uses `NavLink` for active link styling.
-- The 404 page is shown for unknown routes.
-
-## Deployment to GitHub Pages
-
-- Set your deployment base path in `package.json`:
-  ```json
-  {
-    "base": "/react-router-spa/"
-  }
-  ```
-- The Vite config reads this value for production builds:
-  ```js
-  // vite.config.js
-  import pkg from "./package.json";
-  export default defineConfig(({ command }) => ({
-    base: command === "serve" ? "/" : pkg.base,
-    plugins: [react()]
-  }));
-  ```
-- `BrowserRouter` uses the correct basename:
-  ```jsx
-  <BrowserRouter basename={import.meta.env.BASE_URL}>
-    <App />
-  </BrowserRouter>
-  ```
-- The GitHub Actions workflow (`.github/workflows/deploy.yml`) builds and deploys automatically on push to `main`.
-- The workflow copies `index.html` to `404.html` in the build output, so SPA routing works on GitHub Pages.
-
-**If your repository path changes, update `base` in `package.json` and redeploy.**
-
-## SPA 404 Fallback
-
-GitHub Pages does not support client-side routing out of the box. The deployment workflow copies `index.html` to `404.html` in the build output, so deep links and refreshes work. You do **not** need a 404.html in your public folder.
-
-## Customization
-
-- Edit or add pages in `src/pages/`.
-- Update navigation in `src/components/Navbar.jsx`.
-- Change styles in `src/styles.css`.
-
----
-
-## React Compiler
-
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Tip:
+- Brug altid meningsfuld `alt`-tekst af hensyn til tilgængelighed.
+- Brug `src/assets`, når billedet er en fast del af projektet.
+- Brug `public`, når du vil have en enkel, stabil sti uden import.
