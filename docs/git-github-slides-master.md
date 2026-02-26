@@ -345,3 +345,38 @@ git push -u origin feature/min-branch
 git stash
 git stash pop
 ```
+
+---
+
+# Team-regler (skal følges)
+
+1. Arbejd aldrig direkte på `main`
+2. Opret altid en feature branch pr. opgave
+3. Commit små, fokuserede ændringer ofte
+4. Opret altid PR før merge
+5. Merge først efter review
+
+---
+
+# Commit og PR-guidelines
+
+- Commit-besked skal være konkret:
+  - God: `Add services route to App.jsx`
+  - Dårlig: `fix stuff`
+- En PR bør være lille nok til at kunne reviewes på 5-10 min
+- PR-beskrivelse skal altid have:
+  - Hvad er ændret?
+  - Hvorfor?
+  - Hvordan testes det?
+
+---
+
+# Daglig Git-rutine (checkliste)
+
+1. Start: `fetch/pull` på `main`
+2. Opret/skift til feature branch
+3. Lav ændringer og test lokalt
+4. Stage + commit i Source Control
+5. Push og opret PR
+6. Håndter review-kommentarer
+7. Merge og verificer deployment

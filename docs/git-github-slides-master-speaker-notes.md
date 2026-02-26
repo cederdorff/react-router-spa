@@ -126,3 +126,14 @@ Brug sammen med [git-github-slides-master.md](/Users/race/Developer/react-router
 - Sig at dette er “minimumskommandoer til hverdagen”.
 - Slut med at henvise til guides i `docs/` til næste skridt.
 
+## Slide 32 - Team-regler (skal følges)
+- Præsenter reglerne som fælles samarbejdsaftale, ikke forslag.
+- Understreg især: ingen direkte arbejde på `main`.
+
+## Slide 33 - Commit og PR-guidelines
+- Vis forskellen på gode og dårlige commit-beskeder.
+- Nævn at små PRs giver hurtigere og bedre reviews.
+
+## Slide 34 - Daglig Git-rutine (checkliste)
+- Brug denne slide som “standardstart” i hver workshop.
+- Lad de studerende åbne sliden mens de arbejder.
