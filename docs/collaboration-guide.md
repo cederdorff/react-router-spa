@@ -60,14 +60,17 @@ npm run dev
 
 Arbejd på forskellige features samtidig:
 
-| Person     | Branch navn                 | Feature           | Beskrivelse                  |
-| ---------- | --------------------------- | ----------------- | ---------------------------- |
-| _Person A_ | `feature/add-footer`        | Footer komponent  | Tilføj footer med copyright  |
-| _Person B_ | `feature/improve-homepage`  | Forbedre HomePage | Tilføj hero-sektion og cards |
-| _Person C_ | `feature/add-services-page` | Services-side     | Ny side med services         |
-| _Person D_ | `feature/style-about-page`  | Style About-side  | Forbedre About layout        |
+| Person     | Branch navn                    | Feature              | Beskrivelse                          |
+| ---------- | ------------------------------ | -------------------- | ------------------------------------ |
+| _Person A_ | `feature/add-footer`           | Footer komponent     | Tilføj footer med copyright          |
+| _Person B_ | `feature/improve-homepage`     | Forbedre HomePage    | Tilføj intro-sektion og cards        |
+| _Person C_ | `feature/add-services-page`    | Services-side        | Ny side med services                 |
+| _Person D_ | `feature/style-about-page`     | Style About-side     | Forbedre About layout                |
+| _Person E_ | `feature/improve-contact-page` | Forbedre ContactPage | Tilføj kontaktkort og call-to-action |
 
-Hvis I er 3 personer, vælg tre features og gem den sidste til senere.
+Hvis I er 5 personer, tag alle fem features.  
+Hvis I er 4 personer, vælg fire features og gem én til senere.  
+Hvis I er 3 personer, vælg tre features og gem to til senere.
 
 ## Del 2: Samarbejde med branches og Pull Requests
 
@@ -350,6 +353,66 @@ Tilføj styling i `src/styles.css`:
 }
 ```
 
+#### Person E: Forbedr ContactPage
+
+Opdater `src/pages/ContactPage.jsx` med kontaktkort og en tydelig call-to-action:
+
+```jsx
+export default function ContactPage() {
+  return (
+    <>
+      <header>
+        <h1>Contact</h1>
+      </header>
+      <main className="contact-container">
+        <p>Har du spørgsmål til projektet? Kontakt os her:</p>
+
+        <section className="contact-card">
+          <p>
+            <strong>Email:</strong> team@example.com
+          </p>
+          <p>
+            <strong>Telefon:</strong> +45 12 34 56 78
+          </p>
+          <p>
+            <strong>Åbningstid:</strong> Man-Fre 09:00-16:00
+          </p>
+          <a className="contact-button" href="mailto:team@example.com">
+            Skriv til os
+          </a>
+        </section>
+      </main>
+    </>
+  );
+}
+```
+
+Tilføj styling i `src/styles.css`:
+
+```css
+.contact-container {
+  max-width: 760px;
+}
+
+.contact-card {
+  margin-top: 1rem;
+  padding: 1.25rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.contact-button {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #fff;
+  background: #4a50c7;
+}
+```
+
 ### Step 2.3: Test lokalt
 
 ```bash
@@ -376,6 +439,7 @@ Forslag til beskeder:
 - `feat: improve homepage hero section`
 - `feat: add services page and route`
 - `feat: restyle about page`
+- `feat: improve contact page layout`
   ![Commit message](./images/commit-message.png)
   Du kan bruge Copilot til commit-beskeder, men behold dem korte og beskrivende.
 
@@ -655,12 +719,4 @@ node -v
 2. Brug Node 18+.
 3. Slet `node_modules` og kør `npm install` igen.
 
-## Del 5: Næste skridt
-
-Når I har fulgt guiden, har I:
-
-- inviteret collaborators
-- arbejdet med branches
-- oprettet og reviewed PRs
-- merged sikkert til `main`
-- verificeret deployment på GitHub Pages
+---

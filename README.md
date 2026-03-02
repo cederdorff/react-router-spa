@@ -68,9 +68,10 @@ Brug guiderne i denne rækkefølge:
 I samarbejdsguiden fordeles opgaver typisk sådan:
 
 - Person A: tilføj `Footer` komponent
-- Person B: forbedr `HomePage` layout (behold billedeksempler)
+- Person B: forbedr `HomePage` med intro-sektion og cards (behold billedeksempler)
 - Person C: tilføj `ServicesPage` + route + nav-link
 - Person D: forbedr indhold/layout på `AboutPage`
+- Person E: forbedr `ContactPage` med kontaktkort og call-to-action
 
 Bemærk: Disse ændringer er øvelsesopgaver i Del 2 og er ikke nødvendigvis en del af base-templaten på `main`.
 
