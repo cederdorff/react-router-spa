@@ -642,7 +642,153 @@ Efter hver merge til `main`:
 4. Åbn jeres GitHub Pages URL.
 5. Opdatér siden og tjek at ændringen er synlig live.
 
-## Del 3: Best Practices
+## Del 3: Data fra JSON i `public` (Products)
+
+Formål: I laver en lokal datafil i `public/` og henter data med `fetch`, så I kan arbejde videre med produkter i UI'et.
+
+### Step 3.1: Opret en ny branch til data-opgaven
+
+Start altid i en feature-branch (ikke i `main`).
+
+Forslag til branch-navn:
+
+- `feature/add-products-json`
+
+Flow i VS Code:
+
+1. Skift til `main`.
+2. Klik **Sync Changes**.
+3. Opret ny branch: `feature/add-products-json`.
+4. Arbejd videre i den branch, og opret PR når opgaven er færdig.
+
+### Step 3.2: Opret `public/products.json`
+
+Opret filen `public/products.json` med eksempeldata:
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Starter Plan",
+    "price": 99,
+    "category": "Subscription",
+    "description": "Basic adgang til platformen."
+  },
+  {
+    "id": 2,
+    "name": "Pro Plan",
+    "price": 199,
+    "category": "Subscription",
+    "description": "Udvidede features til teams."
+  },
+  {
+    "id": 3,
+    "name": "UI Kit",
+    "price": 49,
+    "category": "Design Asset",
+    "description": "Komponentbibliotek til hurtig prototyping."
+  }
+]
+```
+
+Hvad er vigtigt at forstå om JSON-filen:
+
+- Filen indeholder en **liste** (array) af produkter: den starter med `[` og slutter med `]`.
+- Hvert produkt er et **objekt** med felter som `id`, `name`, `price`, `category`, `description`.
+- Tekstværdier skal stå i dobbelte anførselstegn `"..."`.
+- Der må ikke være trailing comma efter sidste felt i et objekt eller sidste objekt i listen.
+
+Tip: Brug `id` som unikt nummer for hvert produkt, så React kan bruge `key={product.id}`.
+
+### Step 3.3: Opret `ProductsPage` og fetch data
+
+Opret `src/pages/ProductsPage.jsx`:
+
+```jsx
+import { useEffect, useState } from "react";
+
+export default function ProductsPage() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    async function loadProducts() {
+      const response = await fetch("products.json");
+      const data = await response.json();
+      setProducts(data);
+    }
+
+    loadProducts();
+  }, []);
+
+  return (
+    <>
+      <header>
+        <h1>Products</h1>
+      </header>
+      <main>
+        <section className="products-grid">
+          {products.map((product) => (
+            <article key={product.id} className="product-card">
+              <h3>{product.name}</h3>
+              <p>{product.description}</p>
+              <p>
+                <strong>Kategori:</strong> {product.category}
+              </p>
+              <p>
+                <strong>Pris:</strong> {product.price} DKK
+              </p>
+            </article>
+          ))}
+        </section>
+      </main>
+    </>
+  );
+}
+```
+
+Tilføj styling i `src/styles.css`:
+
+```css
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.product-card {
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+}
+```
+
+### Step 3.4: Tilføj route og navigation
+
+Opdater `src/App.jsx`:
+
+```jsx
+import ProductsPage from "./pages/ProductsPage";
+
+<Route path="/products" element={<ProductsPage />} />
+```
+
+Opdater `src/components/Navbar.jsx`:
+
+```jsx
+<NavLink to="/products">Products</NavLink>
+```
+
+### Step 3.5: Test, commit, push og PR
+
+1. Kør `npm run dev`.
+2. Gå til `/products` og bekræft at data vises fra `products.json`.
+3. Commit fx med beskeden: `feat: add products json and fetch page`.
+4. Push branch og opret PR som i Del 2.
+
+Tip: Lav denne del som en fælles opgave efter Del 2, eller fordel den på to personer (én laver JSON, én laver UI/fetch).
+
+## Del 4: Best Practices
 
 ### Gode commit-beskeder
 
@@ -680,7 +826,7 @@ Undgå:
 2. Arbejd altid i en feature-branch.
 3. Merge kun til `main`, når ændringen er testet og klar.
 
-## Del 4: Troubleshooting
+## Del 5: Troubleshooting
 
 Ikke en øvelse, men en tjekliste til at løse almindelige problemer.
 
