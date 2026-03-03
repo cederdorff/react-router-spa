@@ -25,10 +25,10 @@ export default function ProductsPage() {
               <h3>{product.name}</h3>
               <p>{product.description}</p>
               <p>
-                <strong>Kategori:</strong> {product.category}
+                <strong>Category:</strong> {product.category}
               </p>
               <p>
-                <strong>Pris:</strong> {product.price} DKK
+                <strong>Price:</strong> {product.price} DKK
               </p>
             </article>
           ))}

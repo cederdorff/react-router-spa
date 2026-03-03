@@ -4,20 +4,20 @@
     "name": "Starter Plan",
     "price": 99,
     "category": "Subscription",
-    "description": "Basic adgang til platformen."
+    "description": "Basic access to the platform."
   },
   {
     "id": 2,
     "name": "Pro Plan",
     "price": 199,
     "category": "Subscription",
-    "description": "Udvidede features til teams."
+    "description": "Extended features for teams."
   },
   {
     "id": 3,
     "name": "UI Kit",
     "price": 49,
     "category": "Design Asset",
-    "description": "Komponentbibliotek til hurtig prototyping."
+    "description": "Component library for rapid prototyping."
   }
 ]
