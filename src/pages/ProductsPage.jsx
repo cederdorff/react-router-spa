@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ProductCard from "../components/ProductCard";
 
 export default function ProductsPage() {
   const [products, setProducts] = useState([]);
@@ -21,16 +22,7 @@ export default function ProductsPage() {
       <main>
         <section className="products-grid">
           {products.map((product) => (
-            <article key={product.id} className="product-card">
-              <h3>{product.name}</h3>
-              <p>{product.description}</p>
-              <p>
-                <strong>Category:</strong> {product.category}
-              </p>
-              <p>
-                <strong>Price:</strong> {product.price} DKK
-              </p>
-            </article>
+            <ProductCard key={product.id} product={product} />
           ))}
         </section>
       </main>
