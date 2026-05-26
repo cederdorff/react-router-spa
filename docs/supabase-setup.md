@@ -1,85 +1,99 @@
 # Supabase setup til Posts
 
-Denne guide viser, hvordan I forbinder projektets `/posts` side til en Supabase `posts` tabel via Supabase REST API.
+Denne guide viser, hvordan `/posts` siden henter data fra en Supabase `posts` tabel.
 
-Projektet bruger ikke `@supabase/supabase-js`. Det bruger almindelig `fetch` i `src/pages/PostsPage.jsx`.
+Projektet bruger almindelig `fetch` i `src/pages/PostsPage.jsx`.
 
-Målet er, at `/posts` kan vise data fra Supabase. I behøver ikke skrive SQL for at følge guiden.
+## Overblik
 
-## 1. Opret Supabase projekt
+For at `/posts` virker, skal fire ting være på plads:
 
-1. Gå til https://supabase.com og opret/log ind.
-2. Opret et nyt projekt.
-3. Vent til projektet er klar.
+1. Supabase har en tabel, der hedder `posts`.
+2. Tabellen har kolonnerne `id`, `created_at`, `caption` og `image`.
+3. Tabellen må læses offentligt via Supabase policies.
+4. Projektet har Supabase URL og publishable key i `.env`.
 
-## 2. Opret `posts` tabel
+## 1. Tjek eller opret `posts` tabellen
 
-Hvis tabellen allerede er oprettet eller importeret af underviseren, kan I gå videre til næste afsnit.
+Åbn Supabase og gå til **Table Editor**.
 
-Hvis I selv opretter tabellen manuelt i Supabase:
+Hvis tabellen allerede findes, så åbn `posts` og tjek, at kolonnerne passer:
 
-1. Gå til **Table Editor**.
-2. Klik **Create a new table**.
-3. Kald tabellen `posts`.
-4. Sørg for, at tabellen har disse kolonner:
+| Kolonne      | Type        | Bruges til                       |
+| ------------ | ----------- | -------------------------------- |
+| `id`         | int8/bigint | Unikt id til React `key`         |
+| `created_at` | timestamptz | Tidspunkt for posten             |
+| `caption`    | text        | Teksten der vises under billedet |
+| `image`      | text        | URL til billedet                 |
 
-| Kolonne      | Type        | Bruges til                         |
-| ------------ | ----------- | ---------------------------------- |
-| `id`         | int8/bigint | Unikt id til React `key`           |
-| `created_at` | timestamptz | Tidspunkt for posten               |
-| `caption`    | text        | Teksten der vises under billedet   |
-| `image`      | text        | URL til billedet                   |
+Hvis tabellen ikke findes:
 
-Det vigtigste for React-koden er, at kolonnerne hedder præcis `id`, `created_at`, `caption` og `image`.
+1. Klik **Create a new table**.
+2. Kald tabellen `posts`.
+3. Opret kolonnerne fra tabellen ovenfor.
 
-## 3. Tilføj eller importer data
+Det vigtigste er kolonnenavnene. React-koden forventer præcis `id`, `created_at`, `caption` og `image`.
 
-Hvis underviseren har udleveret data, kan I importere dem i Supabase eller indtaste rækkerne manuelt i **Table Editor**.
+## 2. Indsæt et par test-data
 
-Hver række skal fx have:
+Det er en god ide at indsætte 2-3 rækker med det samme, så du har noget at vise på `/posts`.
 
-```text
-caption: Delicious food at the restaurant
-image: https://images.unsplash.com/photo-1548940740-204726a19be3?auto=format&fit=crop&w=500&q=80
+Tilføj data i Supabase med **Insert row**, eller importér data hvis I har en CSV-fil.
+
+Du må gerne tage udgangspunkt i disse eksempler og kun indsætte `image` og `caption` i Supabase:
+
+```json
+[
+  {
+    "caption": "Beautiful sunset at the beach",
+    "image": "https://images.unsplash.com/photo-1566241832378-917a0f30db2c?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "caption": "Exploring the city streets of Aarhus",
+    "image": "https://images.unsplash.com/photo-1559070169-a3077159ee16?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "caption": "Delicious food at the restaurant",
+    "image": "https://images.unsplash.com/photo-1548940740-204726a19be3?auto=format&fit=crop&w=500&q=80"
+  }
+]
 ```
 
 `image` skal være en fuld URL til et billede.
 
-## 4. Tjek Row Level Security
+## 3. Tjek læseadgang
 
-Hvis `/posts` skal kunne hente data uden login, skal tabellen tillade offentlig læsning.
+For at React-appen kan hente posts uden login, skal tabellen tillade offentlig læsning.
 
-1. Gå til tabellen `posts` i Supabase.
+1. Gå til `posts` tabellen i Supabase.
 2. Find **RLS** / **Policies**.
 3. Sørg for, at Row Level Security er slået til.
-4. Opret en policy, der tillader `SELECT` / read access for public/anon users.
+4. Opret en policy, der tillader `SELECT` / read access for public eller anon users.
 
-RLS står for Row Level Security. Tabellen må gerne læses offentligt i denne starter, men kun fordi I eksplicit giver lov til offentlig læsning.
+RLS betyder Row Level Security. I denne starter må posts gerne læses offentligt, men kun fordi der er en policy, som giver lov til det.
 
-Hvis underviseren allerede har sat tabellen og policies op, skal I ikke ændre noget her. I skal bare vide, at dette er grunden til, at React-appen må læse data fra Supabase.
+Test gerne `/posts` før I ændrer policies. Hvis siden viser posts, er læseadgangen allerede sat rigtigt op.
 
-Hvis I er i tvivl, så test først `/posts`. Hvis siden viser posts, er adgangen sat rigtigt op.
+## 4. Find URL og publishable key
 
-## 5. Find URL og publishable key
-
-1. Find Data API URL i Supabase Dashboard under **Integrations** -> **Data API**.
-2. Find publishable key under **Settings** -> **API Keys**.
-3. REST endpointet til tabellen skal ende på `/rest/v1/posts`.
-
-Eksempel:
+Find disse to værdier i Supabase:
 
 ```bash
 VITE_SUPABASE_URL=https://your-project-ref.supabase.co/rest/v1/posts
 VITE_SUPABASE_APIKEY=sb_publishable_your_key_here
 ```
 
-Brug en publishable key i frontend. Brug aldrig secret key eller service role key i React-kode, `.env` filer til Vite eller GitHub Pages builds.
+`VITE_SUPABASE_URL` er REST endpointet til `posts` tabellen. Det skal ende på `/rest/v1/posts`.
 
-## 6. Opsæt lokal `.env`
+`VITE_SUPABASE_APIKEY` er projektets publishable key.
+
+Brug kun publishable key i frontend. Brug aldrig secret key eller service role key i React-kode, Vite `.env` filer eller GitHub Pages builds.
+
+## 5. Opsæt lokal `.env`
 
 Projektet har en fil, der hedder `.env.example`. Den er en skabelon.
 
-I skal lave en kopi af den og kalde kopien `.env`.
+Lav en kopi af `.env.example`, og kald kopien `.env`.
 
 Manuel måde:
 
@@ -115,9 +129,9 @@ npm run dev
 http://localhost:5173/posts
 ```
 
-## 7. Opsæt GitHub Pages miljøvariabler
+## 6. Opsæt GitHub Pages variabler
 
-`.env` bliver ikke pushet til GitHub. Derfor skal GitHub Actions også have variablerne, ellers virker `/posts` kun lokalt.
+`.env` bliver ikke pushet til GitHub. Derfor skal GitHub Actions også kende Supabase værdierne, ellers virker `/posts` kun lokalt.
 
 1. Gå til repository på GitHub.
 2. Gå til **Settings** -> **Secrets and variables** -> **Actions**.
@@ -131,46 +145,6 @@ VITE_SUPABASE_APIKEY
 
 Workflowet i `.github/workflows/deploy.yml` sender variablerne videre til `npm run build`.
 
-## Hvis underviseren vil vise SQL
-
-Denne kode gør det samme som de manuelle trin ovenfor. Spring afsnittet over, hvis I ikke arbejder med SQL endnu.
-
-```sql
-create table public.posts (
-  id bigint generated always as identity primary key,
-  created_at timestamptz not null default now(),
-  caption text not null,
-  image text not null
-);
-
-alter table public.posts enable row level security;
-
-create policy "Allow public read access to posts"
-on public.posts
-for select
-to anon
-using (true);
-```
-
-Eksempeldata:
-
-```sql
-insert into public.posts (caption, image)
-values
-  (
-    'Delicious food at the restaurant',
-    'https://images.unsplash.com/photo-1548940740-204726a19be3?auto=format&fit=crop&w=500&q=80'
-  ),
-  (
-    'Exploring the city center',
-    'https://images.unsplash.com/photo-1612624629424-ddde915d3dc5?auto=format&fit=crop&w=500&q=80'
-  ),
-  (
-    'A cozy morning with coffee',
-    'https://images.unsplash.com/photo-1545319261-f3760f9dd64d?auto=format&fit=crop&w=500&q=80'
-  );
-```
-
 ## Fejlfinding
 
 Hvis `/posts` er tom:
@@ -179,7 +153,7 @@ Hvis `/posts` er tom:
 2. Tjek at tabellen har rækker med `caption` og `image`.
 3. Tjek at `.env` findes lokalt og starter med `VITE_`.
 4. Genstart Vite dev-serveren.
-5. Tjek at Supabase RLS policy tillader `select` for `anon`.
+5. Tjek at Supabase RLS policy tillader `select` for public/anon users.
 
 Hvis GitHub Pages virker, men `/posts` ikke viser data:
 
