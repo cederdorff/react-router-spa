@@ -90,20 +90,14 @@ const imageUrl = `${import.meta.env.BASE_URL}logo.webp`;
 
 - GitHub repository er pushet til GitHub.
 - GitHub Pages er sat til **GitHub Actions** under **Settings** -> **Pages**.
-- Projektet har en workflow-fil i `.github/workflows/deploy.yml`.
+- Projektet har en workflow-fil, der ligger i projektroden her: [`.github/workflows/deploy.yml`](../.github/workflows/deploy.yml).
+- Stien betyder: mappen `.github`, undermappen `workflows`, filen `deploy.yml`.
 - Workflowet kører `npm ci`.
 - Workflowet kører `npm run build`.
 - Workflowet uploader `dist`.
 - Workflowet kopierer `dist/index.html` til `dist/404.html`.
 
 `404.html` er vigtigt for React Router. Det gør, at refresh på fx `/about` eller `/posts` stadig åbner React-appen.
-
-Eksempel på step:
-
-```yaml
-- name: Copy index.html to 404.html for SPA routing
-  run: cp ./dist/index.html ./dist/404.html
-```
 
 ### Test efter deployment
 
@@ -149,6 +143,9 @@ VITE_SUPABASE_APIKEY=sb_publishable_your_key_here
 
 ### React fetch
 
+- Der findes en side til posts, fx `src/pages/PostsPage.jsx`.
+- Siden er koblet på React Router, fx med route `/posts` i `src/App.jsx`.
+- Navigationen linker til `/posts`, hvis siden skal kunne åbnes fra menuen.
 - React-koden læser env-variabler med `import.meta.env`.
 - Fetch-kaldet sender Supabase API key i headers.
 - Data gemmes i state.
@@ -179,15 +176,7 @@ VITE_SUPABASE_URL
 VITE_SUPABASE_APIKEY
 ```
 
-- `deploy.yml` sender variablerne videre til `npm run build`:
-
-```yaml
-- name: Build
-  run: npm run build
-  env:
-    VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
-    VITE_SUPABASE_APIKEY: ${{ vars.VITE_SUPABASE_APIKEY }}
-```
+- [`.github/workflows/deploy.yml`](../.github/workflows/deploy.yml) sender variablerne videre til `npm run build`.
 
 ### Test Supabase
 
@@ -214,7 +203,7 @@ Hvis CSS eller billeder mangler:
 Hvis `/posts` virker lokalt, men ikke på GitHub Pages:
 
 - Tjek GitHub repository variables.
-- Tjek at variablerne sendes med i `deploy.yml`.
+- Tjek at variablerne sendes med i [`.github/workflows/deploy.yml`](../.github/workflows/deploy.yml).
 - Kør deployment igen.
 
 Hvis `/posts` er tom:
