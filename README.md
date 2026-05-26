@@ -6,7 +6,8 @@ Et minimalt React 19 + Vite 8 + React Router v7 template-projekt, klar til under
 
 - React 19 + Vite 8 med den officielle React-plugin
 - React Router v7 med `BrowserRouter` og `basename` via `import.meta.env.BASE_URL`
-- 4 sider out-of-the-box: `Home`, `About`, `Contact`, `NotFound`
+- 5 sider out-of-the-box: `Home`, `Posts`, `About`, `Contact`, `NotFound`
+- Supabase REST starter med `/posts`, `.env.example` og GitHub Pages workflow support
 - Eksempler på billedbrug i `HomePage`:
   - import fra `src/assets`
   - fil fra `public`
@@ -48,6 +49,8 @@ VITE_SUPABASE_APIKEY=your-supabase-publishable-api-key
 3. Genstart Vite dev-serveren efter ændringer i `.env`.
 4. Åbn `/posts`.
 
+Se hele guiden i [docs/supabase-setup.md](docs/supabase-setup.md), inkl. manuel tabel/import, RLS policy og GitHub Pages variabler.
+
 ## Projektstruktur
 
 ```text
@@ -58,6 +61,7 @@ src/
   assets/               # Lokale assets (fx example.svg)
   components/
     Navbar.jsx
+    PostCard.jsx
   pages/
     HomePage.jsx
     PostsPage.jsx
@@ -79,6 +83,8 @@ Brug guiderne i denne rækkefølge:
    Fokus: opret repository fra template, lokal opsætning, `base`-konfiguration og deployment.
 2. Del 2: [docs/collaboration-guide.md](docs/collaboration-guide.md)
    Fokus: collaborators, branches, Pull Requests, review og merge-flow.
+3. Supabase setup: [docs/supabase-setup.md](docs/supabase-setup.md)
+   Fokus: `posts` tabel/import, `.env`, RLS policy og GitHub Pages variabler.
 
 ## Opgaver i Del 2 (teamarbejde)
 
@@ -115,6 +121,7 @@ Workflowet i `.github/workflows/deploy.yml`:
 Routes er defineret i `src/App.jsx`.
 
 - `/` -> `HomePage`
+- `/posts` -> `PostsPage`
 - `/about` -> `AboutPage`
 - `/contact` -> `ContactPage`
 - `*` -> `NotFoundPage`

@@ -11,6 +11,7 @@ Formål med guiden:
 - oprette og reviewe Pull Requests
 - merge sikkert til `main`
 - verificere deployment på GitHub Pages
+- dele Supabase `.env` setup uden at committe lokale `.env` filer
 
 Vigtig regel: Arbejd aldrig direkte på `main`.
 `main` skal altid være stabil, fordi den deployes automatisk.
@@ -50,11 +51,14 @@ npm run dev
 
 5. Åbn lokal URL i browser og test at løsningen kører.
    ![Localhost test](./images/localhost-test.png)
-6. Brug 2-3 minutter på at gennemgå projektet, så alle ved hvad templaten allerede kan.
+6. Hvis I bruger Supabase, skal hver collaborator kopiere `.env.example` til `.env` og indsætte teamets Supabase værdier.
+   Se [supabase-setup.md](supabase-setup.md).
+7. Brug 2-3 minutter på at gennemgå projektet, så alle ved hvad templaten allerede kan.
    Tjek især `HomePage`, hvor billeder vises på tre måder:
    - **Import fra `src/assets`**: bruges til billeder, der er en del af appens kodebase. Vite håndterer dem i build-processen.
    - **Fil fra `public`**: bruges til statiske filer, der skal ligge med fast sti (fx logo/favicons), uden import i komponenten.
    - **Ekstern URL**: bruges når billedet kommer fra en ekstern kilde/API, og ikke ligger i jeres repository.
+   Tjek også `PostsPage`, hvor data hentes fra Supabase med `fetch`.
 
 ### Step 1.3: Fordel opgaver i gruppen
 

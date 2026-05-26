@@ -40,6 +40,8 @@ npm run dev
 
 Åbn derefter den lokale URL fra terminalen og verificér, at appen virker i browseren.
 
+Hvis I vil bruge `/posts` siden med Supabase, skal I også opsætte `.env`. Følg [supabase-setup.md](supabase-setup.md), før I tester `/posts`.
+
 ## 5. Konfigurer base path
 
 1. Åbn `package.json`.
@@ -90,6 +92,8 @@ Reference (GitHub Desktop):
    ![The Deployed solution in browser](./images/deployed-solution.png)
 
 Deployment gennemført.
+
+Hvis `/posts` skal virke på GitHub Pages, skal repository variables også være sat i GitHub Actions. Se [supabase-setup.md](supabase-setup.md).
 
 ## 8. Test deployment med en lille ændring
 
