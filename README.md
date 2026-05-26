@@ -33,6 +33,21 @@ npm run preview  # preview af build lokalt
 npm run lint     # eslint
 ```
 
+## Supabase starter
+
+Projektet indeholder en `PostsPage`, der henter posts direkte fra Supabase REST API'et via `fetch`.
+
+1. Kopiér `.env.example` til `.env`.
+2. Udfyld:
+
+```bash
+VITE_SUPABASE_URL=https://your-project.supabase.co/rest/v1/posts
+VITE_SUPABASE_APIKEY=your-supabase-publishable-api-key
+```
+
+3. Genstart Vite dev-serveren efter ændringer i `.env`.
+4. Åbn `/posts`.
+
 ## Projektstruktur
 
 ```text
@@ -45,6 +60,7 @@ src/
     Navbar.jsx
   pages/
     HomePage.jsx
+    PostsPage.jsx
     AboutPage.jsx
     ContactPage.jsx
     NotFoundPage.jsx
