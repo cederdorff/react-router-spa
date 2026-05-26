@@ -1,6 +1,6 @@
 # Speaker Notes: Git og GitHub Master Slides
 
-Brug sammen med [git-github-slides-master.md](/Users/race/Developer/react-router-spa/docs/git-github-slides-master.md).
+Brug sammen med [git-github-slides-master.md](git-github-slides-master.md).
 
 ## Slide 1 - Git og GitHub Master Slides
 - Sæt rammen: vi tager både begreber og konkret workflow fra jeres øvelser.

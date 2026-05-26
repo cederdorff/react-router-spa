@@ -88,7 +88,7 @@ const imageUrl = `${import.meta.env.BASE_URL}logo.webp`;
 - GitHub Pages er sat til **GitHub Actions** under **Settings** -> **Pages**.
 - Workflow-filen ligger i projektroden her: [`.github/workflows/deploy.yml`](../.github/workflows/deploy.yml).
 - Stien betyder: mappen `.github`, undermappen `workflows`, filen `deploy.yml`.
-- Workflowet installerer dependencies.
+- Workflowet installerer pakker.
 - Workflowet bygger projektet.
 - Workflowet uploader `dist`.
 - Workflowet kopierer `dist/index.html` til `dist/404.html`.
@@ -125,7 +125,7 @@ const imageUrl = `${import.meta.env.BASE_URL}logo.webp`;
 
 - Projektet har en `.env.example`, der viser hvilke variabler der skal bruges.
 - Projektet har en lokal `.env` med de rigtige Supabase værdier.
-- `.env` bliver ikke committtet til GitHub.
+- `.env` bliver ikke committet til GitHub.
 - `.gitignore` ignorerer `.env`.
 - Vite dev-serveren er genstartet efter ændringer i `.env`.
 

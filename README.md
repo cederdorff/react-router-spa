@@ -70,12 +70,13 @@ src/
     NotFoundPage.jsx
 public/
   logo.webp             # Public asset
+.env.example            # Skabelon til lokale Supabase variabler
 .github/
   workflows/
     deploy.yml          # Build + deploy til GitHub Pages
 ```
 
-## Onboarding (Del 1 + Del 2)
+## Guides
 
 Brug guiderne i denne rækkefølge:
 
