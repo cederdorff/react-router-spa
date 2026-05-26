@@ -3,6 +3,8 @@
 Del 1 af onboarding-guiden: opret jeres eget repository fra denne template, kør projektet lokalt, og deploy til GitHub Pages.  
 Del 2 fortsætter i [collaboration-guide.md](collaboration-guide.md), hvor I arbejder med branches, Pull Requests og teamets samarbejdsflow.
 
+Bruger I ikke starter-templaten, så brug også [checklist-github-pages-supabase.md](checklist-github-pages-supabase.md).
+
 ## 1. Brug templaten
 
 1. Åbn template-repository: https://github.com/cederdorff/react-router-spa

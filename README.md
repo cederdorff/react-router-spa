@@ -85,6 +85,8 @@ Brug guiderne i denne rækkefølge:
    Fokus: collaborators, branches, Pull Requests, review og merge-flow.
 3. Supabase setup: [docs/supabase-setup.md](docs/supabase-setup.md)
    Fokus: `posts` tabel/import, `.env`, RLS policy og GitHub Pages variabler.
+4. Tjekliste uden starter-template: [docs/checklist-github-pages-supabase.md](docs/checklist-github-pages-supabase.md)
+   Fokus: hvad der skal være på plads for React Router, GitHub Pages og Supabase.
 
 ## Opgaver i Del 2 (teamarbejde)
 
