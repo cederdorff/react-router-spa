@@ -152,6 +152,8 @@ Opdater `src/pages/HomePage.jsx` med en introduktion og tre feature-kort, men be
 ```jsx
 import reactRouterLogo from "../assets/example.svg";
 
+const publicLogoUrl = `${import.meta.env.BASE_URL}logo.webp`;
+
 export default function HomePage() {
   return (
     <>
@@ -182,7 +184,7 @@ export default function HomePage() {
           <img src={reactRouterLogo} alt="Example SVG" className="img-small" />
 
           <h3>2. Public folder</h3>
-          <img src="logo.webp" alt="Logo from public folder" className="img-small" />
+          <img src={publicLogoUrl} alt="Logo from public folder" className="img-small" />
 
           <h3>3. External URL</h3>
           <img src="https://picsum.photos/200" alt="Random external image" className="img-medium" />
@@ -862,7 +864,7 @@ npm run build
 node -v
 ```
 
-2. Brug Node 18+.
+2. Brug Node 24 LTS, eller mindst Node `20.19.0` / `22.12.0`.
 3. Slet `node_modules` og kør `npm install` igen.
 
 ---

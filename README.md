@@ -1,10 +1,10 @@
 # React Router SPA Template
 
-Et minimalt React 19 + Vite + React Router v7 template-projekt, klar til undervisning, samarbejde i branches og deployment til GitHub Pages.
+Et minimalt React 19 + Vite 8 + React Router v7 template-projekt, klar til undervisning, samarbejde i branches og deployment til GitHub Pages.
 
 ## Hvad projektet indeholder
 
-- React 19 + Vite + SWC
+- React 19 + Vite 8 med den officielle React-plugin
 - React Router v7 med `BrowserRouter` og `basename` via `import.meta.env.BASE_URL`
 - 4 sider out-of-the-box: `Home`, `About`, `Contact`, `NotFound`
 - Eksempler på billedbrug i `HomePage`:
@@ -22,6 +22,7 @@ npm run dev
 ```
 
 Appen starter lokalt via Vite (typisk `http://localhost:5173`).
+Node 24 LTS anbefales. Vite 8 kræver mindst Node `20.19.0` eller `22.12.0`.
 
 ## Scripts
 
@@ -120,7 +121,8 @@ Projektet viser 3 måder at bruge billeder på i `HomePage`. Brug den metode, de
    - God til fx logo/favicons eller filer, du vil kunne referere direkte til.
    - Filen bliver ikke importeret i JavaScript.
    ```jsx
-   <img src="logo.webp" alt="Logo fra public" />;
+   const publicLogoUrl = `${import.meta.env.BASE_URL}logo.webp`;
+   <img src={publicLogoUrl} alt="Logo fra public" />;
    ```
 
 3. Ekstern URL  

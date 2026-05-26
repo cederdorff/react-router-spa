@@ -1,5 +1,7 @@
 import reactRouterLogo from "../assets/example.svg";
 
+const publicLogoUrl = `${import.meta.env.BASE_URL}logo.webp`;
+
 export default function HomePage() {
   return (
     <>
@@ -24,7 +26,7 @@ export default function HomePage() {
             Place the image in the /public folder and reference it by path. The file is served directly without any
             processing.
           </p>
-          <img src="logo.webp" alt="Favicon from public folder" className="img-small" />
+          <img src={publicLogoUrl} alt="Favicon from public folder" className="img-small" />
 
           <h3>3. External URL</h3>
           <p>Use a full URL to load an image from the internet, just like in regular HTML.</p>
