@@ -83,11 +83,11 @@ VITE_SUPABASE_URL=https://your-project-ref.supabase.co/rest/v1/posts
 VITE_SUPABASE_APIKEY=sb_publishable_your_key_here
 ```
 
-`VITE_SUPABASE_URL` er REST endpointet til `posts` tabellen. Det skal ende på `/rest/v1/posts`.
+`VITE_SUPABASE_URL` er URL'en til `posts` tabellen. Den skal ende på `/rest/v1/posts`.
 
 `VITE_SUPABASE_APIKEY` er projektets publishable key.
 
-Brug kun publishable key i frontend. Brug aldrig secret key eller service role key i React-kode, Vite `.env` filer eller GitHub Pages builds.
+Brug kun publishable key i frontend. Brug ikke andre Supabase keys i React-kode, Vite `.env` filer eller GitHub Pages builds.
 
 ## 5. Opsæt lokal `.env`
 

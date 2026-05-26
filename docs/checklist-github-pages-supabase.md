@@ -2,62 +2,57 @@
 
 Brug denne tjekliste, hvis projektet ikke er lavet ud fra starter-templaten, eller hvis noget ikke virker efter deployment.
 
-## A. React Router på GitHub Pages
+Arbejd oppefra og ned. Først skal appen virke lokalt. Derefter skal GitHub Pages virke. Til sidst skal Supabase virke både lokalt og online.
 
-### Projektet
+## 1. Appen virker lokalt
 
 - Projektet er et Vite React projekt.
-- `npm install` er kørt.
-- `npm run dev` virker lokalt.
-- `npm run build` kan bygge projektet uden fejl.
+- Dependencies er installeret med `npm install`.
+- `npm run dev` starter appen lokalt.
+- Appen kan åbnes i browseren.
+- `npm run build` bygger projektet uden fejl.
 - React Router er installeret:
 
 ```bash
 npm install react-router
 ```
 
-### Router setup
+## 2. React Router er sat rigtigt op
 
-- Appen bruger `BrowserRouter` i `src/main.jsx`.
-- `BrowserRouter` bruger `basename={import.meta.env.BASE_URL}`.
+- `src/main.jsx` bruger `BrowserRouter`.
+- `BrowserRouter` har `basename={import.meta.env.BASE_URL}`.
 
 Eksempel:
 
 ```jsx
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router";
-import App from "./App.jsx";
-
-createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
-      <App />
-    </BrowserRouter>
-  </StrictMode>
-);
+<BrowserRouter basename={import.meta.env.BASE_URL}>
+  <App />
+</BrowserRouter>
 ```
 
 - Routes ligger i fx `src/App.jsx`.
-- Interne links bruger `Link` eller `NavLink` fra `react-router`, ikke almindelige `<a href="">`.
+- Interne links bruger `Link` eller `NavLink` fra `react-router`.
+- Interne links bruger ikke almindelige `<a href="">`.
 
-### Base path
+## 3. Vite kender GitHub Pages base path
 
-GitHub Pages deployer ofte projektet på en URL som:
+GitHub Pages viser typisk projektet på en URL som:
 
 ```text
 https://brugernavn.github.io/repository-navn/
 ```
 
-Derfor skal Vite kende repository-navnet.
+Derfor skal projektet kende repository-navnet.
 
-- `package.json` har en `base` værdi, der matcher repository-navnet:
+- `package.json` har en `base`, der matcher repository-navnet:
 
 ```json
 "base": "/repository-navn/"
 ```
 
-- `vite.config.js` bruger denne `base` ved build:
+- `vite.config.js` bruger denne `base`, når projektet bygges.
+
+Din `vite.config.js` skal se sådan ud:
 
 ```js
 import { defineConfig } from "vite";
@@ -72,7 +67,7 @@ export default defineConfig(({ command }) => {
 });
 ```
 
-### Filer og assets
+## 4. Filer og billeder bruger rigtige stier
 
 - `index.html` loader React med absolut sti:
 
@@ -80,68 +75,70 @@ export default defineConfig(({ command }) => {
 <script type="module" src="/src/main.jsx"></script>
 ```
 
+- Billeder fra `src/assets` importeres i komponenten.
 - Filer fra `public/` bruger `import.meta.env.BASE_URL`, hvis de bruges i React:
 
 ```jsx
 const imageUrl = `${import.meta.env.BASE_URL}logo.webp`;
 ```
 
-### GitHub Pages setup
+## 5. GitHub Pages workflow findes
 
-- GitHub repository er pushet til GitHub.
+- Projektet er pushet til GitHub.
 - GitHub Pages er sat til **GitHub Actions** under **Settings** -> **Pages**.
-- Projektet har en workflow-fil, der ligger i projektroden her: [`.github/workflows/deploy.yml`](../.github/workflows/deploy.yml).
+- Workflow-filen ligger i projektroden her: [`.github/workflows/deploy.yml`](../.github/workflows/deploy.yml).
 - Stien betyder: mappen `.github`, undermappen `workflows`, filen `deploy.yml`.
-- Workflowet kører `npm ci`.
-- Workflowet kører `npm run build`.
+- Workflowet installerer dependencies.
+- Workflowet bygger projektet.
 - Workflowet uploader `dist`.
 - Workflowet kopierer `dist/index.html` til `dist/404.html`.
 
 `404.html` er vigtigt for React Router. Det gør, at refresh på fx `/about` eller `/posts` stadig åbner React-appen.
 
-### Test efter deployment
+## 6. GitHub Pages er testet
 
-- GitHub Actions workflow er grønt.
+- GitHub Actions workflowet er grønt.
 - Forsiden virker på GitHub Pages.
 - En underside virker, fx `/about`.
 - Refresh på en underside virker.
 - Direkte åbning af en underside virker.
 
-## B. Supabase i React
-
-### Supabase setup
+## 7. Supabase-tabellen er klar
 
 - Supabase projektet findes.
 - Der findes en tabel, der hedder `posts`.
-- Tabellen har kolonnerne:
+- Tabellen har disse kolonner:
 
-| Kolonne      | Type        |
-| ------------ | ----------- |
-| `id`         | int8/bigint |
-| `created_at` | timestamptz |
-| `caption`    | text        |
-| `image`      | text        |
+| Kolonne      | Type        | Note                         |
+| ------------ | ----------- | ---------------------------- |
+| `id`         | int8/bigint | Kan laves automatisk         |
+| `created_at` | timestamptz | Kan laves automatisk         |
+| `caption`    | text        | Skal udfyldes for hver post  |
+| `image`      | text        | Skal udfyldes med en fuld URL |
 
 - Tabellen har mindst 2-3 test-rækker.
-- `image` indeholder fulde billed-URL'er.
+- De studerende skal som minimum indsætte `caption` og `image`.
+- `image` indeholder en fuld URL til et billede.
 - Tabellen må læses offentligt via Supabase RLS/policies.
 
-### Lokale env-filer
+## 8. Lokale env-filer er klar
 
-- Projektet har en `.env.example`.
-- `.env.example` viser hvilke variabler projektet kræver:
+- Projektet har en `.env.example`, der viser hvilke variabler der skal bruges.
+- Projektet har en lokal `.env` med de rigtige Supabase værdier.
+- `.env` bliver ikke committtet til GitHub.
+- `.gitignore` ignorerer `.env`.
+- Vite dev-serveren er genstartet efter ændringer i `.env`.
+
+`.env.example` skal vise strukturen med eksempelværdier:
 
 ```bash
 VITE_SUPABASE_URL=https://your-project-ref.supabase.co/rest/v1/posts
 VITE_SUPABASE_APIKEY=sb_publishable_your_key_here
 ```
 
-- Projektet har en lokal `.env` med rigtige værdier.
-- `.env` er ikke committtet til GitHub.
-- `.gitignore` ignorerer `.env`.
-- Vite dev-serveren er genstartet efter ændringer i `.env`.
+`.env` skal have de rigtige værdier fra jeres Supabase projekt.
 
-### React fetch
+## 9. React henter posts fra Supabase
 
 - Der findes en side til posts, fx `src/pages/PostsPage.jsx`.
 - Siden er koblet på React Router, fx med route `/posts` i `src/App.jsx`.
@@ -151,23 +148,46 @@ VITE_SUPABASE_APIKEY=sb_publishable_your_key_here
 - Data gemmes i state.
 - Siden mapper over data og viser posts.
 
-Eksempel:
+Kort eksempel på en `PostsPage` med `useEffect`:
 
 ```jsx
+import { useEffect, useState } from "react";
+
 const URL = import.meta.env.VITE_SUPABASE_URL;
 const headers = {
   apikey: import.meta.env.VITE_SUPABASE_APIKEY,
   "Content-Type": "application/json",
 };
 
-const response = await fetch(URL, { headers });
-const data = await response.json();
-setPosts(data);
+export default function PostsPage() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    async function getPosts() {
+      const response = await fetch(URL, { headers });
+      const data = await response.json();
+      setPosts(data);
+    }
+
+    getPosts();
+  }, []);
+
+  return (
+    <main>
+      {posts.map((post) => (
+        <article key={post.id}>
+          <img src={post.image} alt="" />
+          <h2>{post.caption}</h2>
+        </article>
+      ))}
+    </main>
+  );
+}
 ```
 
-### Supabase på GitHub Pages
+## 10. Supabase virker på GitHub Pages
 
-`.env` findes kun lokalt. GitHub Pages buildet skal derfor også have Supabase værdierne.
+`.env` findes kun lokalt. Derfor skal GitHub Actions også kende Supabase værdierne.
 
 - GitHub repository har disse repository variables under **Settings** -> **Secrets and variables** -> **Actions** -> **Variables**:
 
@@ -177,8 +197,9 @@ VITE_SUPABASE_APIKEY
 ```
 
 - [`.github/workflows/deploy.yml`](../.github/workflows/deploy.yml) sender variablerne videre til `npm run build`.
+- GitHub Actions workflowet er kørt igen efter variablerne blev oprettet.
 
-### Test Supabase
+## 11. Supabase er testet
 
 - `/posts` virker lokalt.
 - `/posts` virker på GitHub Pages.

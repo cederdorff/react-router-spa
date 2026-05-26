@@ -7,7 +7,7 @@ Et minimalt React 19 + Vite 8 + React Router v7 template-projekt, klar til under
 - React 19 + Vite 8 med den officielle React-plugin
 - React Router v7 med `BrowserRouter` og `basename` via `import.meta.env.BASE_URL`
 - 5 sider out-of-the-box: `Home`, `Posts`, `About`, `Contact`, `NotFound`
-- Supabase REST starter med `/posts`, `.env.example` og GitHub Pages workflow support
+- Supabase starter med `/posts`, `.env.example` og GitHub Pages workflow support
 - Eksempler på billedbrug i `HomePage`:
   - import fra `src/assets`
   - fil fra `public`
@@ -36,7 +36,7 @@ npm run lint     # eslint
 
 ## Supabase starter
 
-Projektet indeholder en `PostsPage`, der henter posts direkte fra Supabase REST API'et via `fetch`.
+Projektet indeholder en `PostsPage`, der henter posts fra Supabase med `fetch`.
 
 1. Kopiér `.env.example` til `.env`.
 2. Udfyld:
